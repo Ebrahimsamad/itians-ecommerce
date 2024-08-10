@@ -1,0 +1,28 @@
+#welcomImage{
+    background-image: url("/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 84vh;
+    width: 100%;
+    margin: 0;
+   
+}
+.typing-container {
+    font-family: monospace;
+    font-size: 24px;
+    overflow: hidden; /* Hides overflow */
+    white-space: nowrap;
+    border-right: 2px solid #000; /* Cursor effect */
+    display: inline-block;
+    height: 1.2em; /* Adjust according to font size */
+  }
+  
+  .cursor-blink {
+    animation: cursor-blink 0.75s step-end infinite;
+  }
+  
+  @keyframes cursor-blink {
+    50% { border-color: transparent; }
+  }
+  

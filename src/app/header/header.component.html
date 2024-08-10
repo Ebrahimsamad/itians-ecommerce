@@ -1,0 +1,68 @@
+<div class="bg-white sticky-top">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div class="mt-1 mb-0" >
+                <a routerLink="/" class="text-decoration-none">
+                    <img src="/logo.png" class="w-50 h-75" alt="Logo">
+                </a>
+            </div>
+            <div class="dropdown mt-2  d-lg-none ">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="smallScreenDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="smallScreenDropdown">
+                    <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+                    <li><a class="dropdown-item" routerLink="/register">Sign Up</a></li>
+                    <li><a class="dropdown-item" routerLink="/">Home</a></li>
+                    <li><a class="dropdown-item" routerLink="/add-product">Add Product</a></li>
+                    <li><a class="dropdown-item" routerLink="/favorites"><i class="fa-solid fa-heart"></i> Favorites</a></li>
+                    <li><a class="dropdown-item" routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+                </ul>
+            </div>
+            <div class="d-none d-lg-flex ">
+                <ul class="nav mt-3">
+                    <li class="nav-item">
+                        <a routerLink="/login" class="btn btn-warning  me-2">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/register" class="btn btn-outline-warning">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="d-none d-lg-flex flex-wrap justify-content-between align-items-center mt-2 pb-2">
+            <div class="dropdown">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Browse Category
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Category 1</a></li>
+                    <li><a class="dropdown-item" href="#">Category 2</a></li>
+                    <li><a class="dropdown-item" href="#">Category 3</a></li>
+                </ul>
+            </div>
+            <ul class="nav d-flex justify-content-center align-items-center">
+                <li class="nav-item">
+                    <a routerLink="/" class="btn btn-outline-warning border-0 me-2">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/add-product" class="btn btn-outline-warning border-0">Add Product</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <div class="nav-item position-relative me-3">
+                    <a routerLink="/favorites" class="nav-link">
+                        <i class="fa-solid fa-heart text-warning"></i>
+                    </a>
+                    <span class="bg-danger text-white rounded-pill px-1 position-absolute" style="font-size: small; top: -8px; right: -10px;">0</span>
+                </div>      
+                <div class="nav-item position-relative me-2">
+                    <a routerLink="/cart" class="nav-link">
+                        <i class="fa-solid fa-cart-shopping text-warning"></i>
+                    </a>
+                    <span class="bg-danger text-white rounded-pill px-1 position-absolute" style="font-size: small; top: -8px; right: -10px;">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
