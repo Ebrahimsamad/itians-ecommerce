@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.bg-orange{
+  background-color: #fd7e14;
+}
+
+.text-color{
+  color: #fd7e14;
+}
+a:hover{
+  color: #fd7e14 !important;
+}
+i:hover{
+  color: #fd7e14 !important;
+}
+h5{
+  color: #fd7e14;
+}
