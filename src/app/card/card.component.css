@@ -35,21 +35,21 @@
     margin: 0 auto;
 }
 
-
-  
-
-
 .top-content {
-    position: relative;
-    z-index: 2; /* Ensure it is above the bottom content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 15px;
-    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 2; 
+    padding: 15px;
+    transition: opacity 0.2s ease;
 }
 
 .bottom-content {
     position: absolute;
     top: 0;
-    left: 100%; /* Start off-screen */
+    left: 100%; 
     width: 100%;
     background-color: #d09423;
     border-radius: 20px;
@@ -58,15 +58,17 @@
     justify-content: space-between;
     padding: 15px;
     transition: left 0.3s ease;
-    z-index: 1; /* Ensure it is below the top content */
+    z-index: 1;
+    height: 100%; 
+    box-sizing: border-box;  
 }
 
 .card-body:hover .top-content {
-    opacity: 0; /* Hide top content */
+    opacity: 0; 
 }
 
 .card-body:hover .bottom-content {
-    left: 0; /* Slide in from the right */
+    left: 0; 
 }
 .card-body {
     position: relative;
@@ -75,40 +77,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-}
-
-.top-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    transition: opacity 0.2s ease;
-}
-
-.bottom-content {
-    position: absolute;
-    top: 0;
-    left: 100%; /* Start off-screen */
-    width: 100%;
-    background-color: #d09423;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    transition: left 0.3s ease;
-    height: 100%; /* Extend to fill the height of the parent */
-    box-sizing: border-box; /* Ensure padding and border are included in the width and height */
-
-
-}
-
-.card-body:hover .top-content {
-    opacity: 0; /* Hide top content */
-}
-
-.card-body:hover .bottom-content {
-    left: 0; /* Slide in from the right */
 }
 
 .cart-btn {
