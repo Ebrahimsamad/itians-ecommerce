@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeroComponent } from './hero/hero.component';
+import { HttpClientModule } from '@angular/common/http'; // Import if needed
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeroComponent],
+  imports: [
+    RouterOutlet,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent,
+    HeaderComponent,
+    HttpClientModule, // Include if needed
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'app';
