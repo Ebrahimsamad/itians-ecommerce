@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2" style="background-color: #2d5356; height: 100vh; padding-top: 20px;">
+      <ul class="nav flex-column">
+        <li class="nav-item text-white">
+          <h3 >Admin Dashboard</h3>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/product" onmouseover="this.style.backgroundColor='#e6a23c'" onmouseout="this.style.backgroundColor=''">Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/category" onmouseover="this.style.backgroundColor='#e6a23c'" onmouseout="this.style.backgroundColor=''">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/admin" onmouseover="this.style.backgroundColor='#e6a23c'" onmouseout="this.style.backgroundColor=''">Admin</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="col-md-10 mt-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

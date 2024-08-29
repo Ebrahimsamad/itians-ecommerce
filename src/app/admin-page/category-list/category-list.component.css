@@ -1,0 +1,37 @@
+/* category-list.component.css */
+
+/* Button Styles */
+.create-btn {
+    background-color: #e6a23c;
+    color: #fff;
+  }
+  
+  .edit-btn {
+    background-color: #e6a23c;
+    color: #fff;
+  }
+  
+  .delete-btn {
+    background-color: #2d5356;
+    color: #fff;
+  }
+  
+  /* Table Header Styles */
+  thead {
+    background-color: #2d5356;
+    color: #fff;
+  }
+  
+  /* Modal Header Styles */
+  .edit-modal-header,
+  .create-modal-header {
+    background-color: #2d5356;
+    color: #fff;
+  }
+  
+  /* Save Button Styles */
+  .save-btn {
+    background-color: #e6a23c;
+    color: #fff;
+  }
+  
