@@ -1,5 +1,5 @@
 import { NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DiscountPipe } from '../pipe/discount.pipe';
 import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
 
@@ -11,7 +11,7 @@ import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  product: any;
+  @Input() product: any;
   favorites: any[] = [
     {
       id: 2,
@@ -23,13 +23,9 @@ export class CardComponent {
   ];
 
   constructor() {
-    this.product = {
-      id: 1,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    };
+    
+  }ngOnInit() {
+    console.log(this.product); // التحقق من أن البيانات تصل إلى البطاقة
   }
 
   isFavorite(): boolean {
