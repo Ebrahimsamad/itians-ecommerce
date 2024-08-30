@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CardComponent } from "./card/card.component";
+import { SearchComponent } from "./search/search.component";
+import { OrderCompleteComponent } from "./order-complete/order-complete.component";
+import { FavoritesComponent } from "./favorites/favorites.component";
+import { LoaderComponent } from './loader/loader.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent],
+  imports: [RouterOutlet, SearchComponent, OrderCompleteComponent, FavoritesComponent,LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

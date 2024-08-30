@@ -1,0 +1,25 @@
+<div class="container favorites-page mt-5">
+  <div class="row">
+    <div class="col-md-4 col-lg-3 px-4  mt-5 position-relative " style="border-radius: 20px; background-color: #2d5356">
+      
+
+      <h2 class="fs-1 fw-bold mt-5 text-white">Card Favorites </h2>
+      <p class="text-white">Some description or text about your favorite items.</p>
+      <div class="slider-nav mt-5">
+        <button class="nav-btn prev"><i class="fa-solid fa-arrow-left-long " style="color: #d09423"></i></button>
+        <button class="nav-btn next mx-5"><i class="fa-solid fa-arrow-right-long "style="color: #d09423"></i></button>
+      </div>
+    </div>
+    <div class="col-md-8 col-lg-9">
+      <div class="slider-container">
+        <div class="slider mt-5">
+          <!-- استخدام الـ card الجديدة -->
+          <div  *ngFor="let product of products"  class="mx-2">
+            <app-card [product]="product"></app-card>
+          </div>
+          <!-- هنا الـ app-card ستمثل الـ card الجديدة التي قمت بإنشائها -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
