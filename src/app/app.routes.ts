@@ -7,9 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
-import { AdminListComponent } from './admin-page/admin-list/admin-list.component';
-import { ProductListComponent } from './admin-page/product-list/product-list.component';
-import { CategoryListComponent } from './admin-page/category-list/category-list.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,13 +19,15 @@ const routes: Routes = [
   // },
   { path: 'forgetPassword', component: ForgotPasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'admin', component: AdminListComponent,canActivate: [AuthGuard] },
-  { path: 'product', component: ProductListComponent },
-  { path: 'category', component: CategoryListComponent },
+
+  {
+    path: '',
+    component: HomepageComponent
+  },
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
   // { path: '**', redirectTo: '/login' },
     // Add a default route or other routes as needed
     // { path: '', redirectTo: '/admin', pathMatch: 'full' },
   ];
-  
+
   export { routes };

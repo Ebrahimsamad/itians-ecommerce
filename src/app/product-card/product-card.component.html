@@ -1,0 +1,80 @@
+<!-- <product card.html -->
+<!-- product-card.component.html -->
+<!-- <div class="card" (click)="onSelectProduct()">
+    <img [src]="product.images[0]" alt="{{ product.title }}" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text price">{{ product.price }} EGP</p>
+
+        <div class="rating">
+
+            <ng-container *ngFor="let star of getStars(product.rating)">
+                <i class="bi bi-star"></i>
+            </ng-container>
+        </div>
+        <p [ngClass]="getStockStatusClass()">{{ getStockStatus() }}</p>
+        <button class="btn btn-primary">Add to Cart</button>
+    </div>
+</div> -->
+<!-- <img [src]="product.images[0]" alt="{{ product.title }}" class="card-img"> -->
+<div>
+    <!-- <p class="text-muted">{{ product.description }}</p> -->
+</div>
+<!-- <ng-container *ngFor="let _ of [].constructor(getStars(product.rating).full)">
+    <i class="fa-solid fa-star"></i>
+            </ng-container>
+            <ng-container *ngIf="getStars(product.rating).half">
+                <i class="fa-solid fa-star-half-alt"></i>
+            </ng-container> -->
+<div class="card">
+    <img [src]="product.thumbnail || product.images[0]" alt="{{ product.title }}" class="card-img">
+
+
+    <div class="card-body" (click)="onSelectProduct()">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <hr>
+
+
+        @if (product.discountPercentage > 0) {
+        <p class="discounted-price">
+            <i class="fa-solid fa-badge-percent"></i> Discounted Price: {{ product.price | discountPrice:
+            product.discountPercentage }} EGP
+        </p>
+        } @else {
+        <p class="price">{{ product.price }} EGP</p>
+        }
+
+        <div class="rating">
+
+            <ng-container
+                *ngFor="let _ of [].constructor(5 - getStars(product.rating).full - (getStars(product.rating).half ? 1 : 0))">
+                <i class="fa-regular fa-star"></i>
+            </ng-container>
+
+        </div>
+        <div *ngIf="product">
+            <p [ngClass]="getStockInfo().statusClass">{{ getStockInfo().status }}</p>
+            <p [ngClass]=" product.stock ? 'text-primary':'text-danger' "> </p>
+        </div>
+
+
+    </div>
+    <div> <button class="btn btn-primary w-100" (click)="addToCart()"> to
+            cart
+        </button></div>
+</div>
+<!-- product-card.component.html -->
+<!-- <div class="product-card">
+    <!-- تفاصيل المنتج هنا -->
+<!-- <div (click)="onSelectProduct()">
+        <h3>{{ products.name }}</h3>
+        <img [src]="products.image" alt="{{ products.name }}" />
+        <p>{{ products.price | discountPrice }}</p>
+        <p *ngIf="products.stock > 0">In Stock</p>
+        <p *ngIf="product.stock <= 0">Out of Stock</p>
+    </div>
+    <button (click)="addToCart()">Add to Cart</button>
+    <button (click)="toggleFavorite()">
+        <i [ngClass]="getFavoriteIconClass()"></i>
+    </button>
+</div> --> -->

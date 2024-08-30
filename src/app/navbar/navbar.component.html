@@ -1,0 +1,60 @@
+<div class="header-main">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a routerLink="/" class="logo"
+      ><img
+        src="WhatsApp_Image_2024-08-24_at_12.06.29_PM__1_-removebg-preview.png"
+        alt=""
+    /></a>
+    <!-- Navbar links -->
+    <nav
+      class="navbar navbar-expand-lg"
+      [ngClass]="{ active: navbarVisible }"
+      *ngIf="!searchActive"
+      style="box-shadow: none"
+    >
+      <a routerLink="/" routerLinkActive="active-link">Home</a>
+      <a class="nav-link" routerLink="/products" routerLinkActive="active">
+        Products</a
+      >
+      <a routerLink="/categories" routerLinkActive="active-link">Categories</a>
+      <a routerLink="/about-us" routerLinkActive="active-link">About Us</a>
+      <a routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
+    </nav>
+    <!-- Header icons -->
+    <div class="header-icons">
+      <div class="search-container" *ngIf="searchActive">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
+          placeholder="search title"
+          class="search-input"
+        />
+        <button class="search-button" (click)="performSearch()">
+          <i class="fas fa-search search-icon"></i>
+        </button>
+      </div>
+      <i
+        class="fas fa-search"
+        (click)="toggleSearch()"
+        *ngIf="!searchActive"
+      ></i>
+      <a href="#"><i class="fas fa-heart"></i></a>
+      <a href="#" class="position-relative"
+      routerLink="/cart" routerLinkActive="active-route"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span
+          class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white"
+          style="background-color: #d09423;"
+        >
+          <!-- {{ totalCartItems }} -->
+        2</span>
+      </a>
+      <a href="#"><i class="fas fa-user"></i></a>
+    </div>
+
+    <!-- Toggle Menu Button -->
+    <div class="toggle-menu" (click)="toggleNavbar()">☰ Menu</div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.footer {
+  background-color: white !important;
+}
+
+.footer h4 {
+  color: #535353;
+  font-weight: bold;
+  font-size: x-large;
+
+
+}
+.footer li {
+  font-family: Arial, sans-serif;
+
+}
+.footer a {
+  color: #b0b0b0;
+  text-decoration: none;
+}
+.list-unstyled{
+  font-size:x-large;
+
+}
+.footer-content .list-unstyled li a {
+  color: #7f8080; 
+  text-decoration: none; 
+  
+ 
+}
+.footer a:hover {
+  color: #ffffff;
+  text-decoration: underline; 
+}
+
+
+
+
+
+

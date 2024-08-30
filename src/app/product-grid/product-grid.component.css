@@ -1,0 +1,127 @@
+.product-card {
+  background-color: white;
+  border-radius: 15px; /* الإبقاء على نصف القطر كما هو */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem; /* زيادة المسافة السفلية */
+  margin-top: 2rem; /* زيادة المسافة العلوية */
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* تحسين التأثيرات عند التمرير */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* تكبير الكارت عند التمرير */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* ظل أعمق عند التمرير */
+}
+
+.product-img-container {
+  height: 270px; /* زيادة ارتفاع الصورة لملء المزيد من المساحة */
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* تغيير إلى cover لضمان ملاءمة الصورة بشكل أفضل */
+}
+
+.discount-badge {
+  position: absolute;
+  top: 20px; /* تغيير الموقع لزيادة المسافة */
+  left: 20px;
+  background-color: #2C6D68;
+  color: white;
+  padding: 7px 15px; /* زيادة التباعد الداخلي */
+  border-radius: 25px; /* جعل الزوايا أكثر نعومة */
+  font-size: 16px; /* زيادة حجم الخط */
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 20px; /* تغيير الموقع لزيادة المسافة */
+  right: 20px;
+  font-size: 30px; /* زيادة حجم الأيقونة */
+  background-color: white;
+  padding: 7px 15px; /* زيادة التباعد الداخلي */
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* ظل أعمق */
+}
+
+.card-body {
+  position: relative;
+  background-color: #2d5356;
+  border-radius: 15px; /* الإبقاء على نصف القطر كما هو */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.top-content {
+  padding-bottom: 10px; /* إضافة تباعد أسفل المحتوى */
+}
+
+.product-title {
+  color: white;
+  font-size: 18px; /* زيادة حجم الخط */
+  margin-bottom: 5px; /* زيادة المسافة السفلية */
+}
+
+.price-info {
+  display: flex;
+  align-items: center;
+}
+
+.discounted-price {
+  color: #d09423; /* اللون كما هو */
+  font-size: 20px; /* زيادة حجم الخط */
+}
+
+.original-price {
+  color: #5a5a5a; /* اللون كما هو */
+  font-size: 16px; /* حجم الخط كما هو */
+}
+
+.bottom-content {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  background-color: #d09423; /* اللون كما هو */
+  border-radius: 15px; /* الإبقاء على نصف القطر كما هو */
+  padding: 10px 15px; /* زيادة التباعد الداخلي */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: left 0.4s ease; /* تحسين سلاسة الانتقال */
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.card-body:hover .top-content {
+  opacity: 0.7; /* تقليل الشفافية بدلاً من إخفائها بالكامل */
+}
+
+.card-body:hover .bottom-content {
+  left: 0;
+}
+
+.cart-btn {
+  background-color: #ffffff; /* اللون كما هو */
+  color: #d09423; /* اللون كما هو */
+  border-radius: 50%;
+  padding: 12px; /* زيادة التباعد الداخلي */
+  font-size: 24px; /* زيادة حجم الأيقونة */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ظل أعمق */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 60px; /* زيادة العرض والارتفاع */
+  height: 60px;
+}
+
+.cart-btn-hover {
+  color: #2d5356; /* اللون كما هو */
+}
