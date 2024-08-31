@@ -2,13 +2,13 @@ import { NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-hero',
+  selector: 'app-hero2',
   standalone: true,
   imports: [NgStyle],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
-export class HeroComponent {
+export class HeroComponent2 {
 texts: string[] = ['Enjoy Top Tech Here', 'Explore the Latest Gadgets', 'Shop the Best in Electronics', 'To ITIANS'];
   typingSpeed: number = 100;
   erasingSpeed: number = 50;
