@@ -115,7 +115,13 @@ export class FavoritesComponent implements AfterViewInit {
           settings: {
             slidesToShow: 2,
           }
+        }, {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 1, 
+          }
         },
+        
         {
           breakpoint: 576,
           settings: {
@@ -124,6 +130,8 @@ export class FavoritesComponent implements AfterViewInit {
         }
       ]
     });
+  
+
 
     $('.prev').click(() => {
       $('.slider').slick('slickPrev');

@@ -22,3 +22,9 @@
   display: flex;
   justify-content: center; /* Center the cards */
 }
+/* Show only the first column on screens less than 999px */
+@media (max-width: 1000px) {
+  .slick-slide {
+    width: 50%; 
+  }
+}
