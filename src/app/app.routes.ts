@@ -10,6 +10,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { HomepageComponent } from './homepage/homepage.component';
 import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUSComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,7 +35,18 @@ const routes: Routes = [
   {
     path:"favourite",
     component:FavoritesComponent
+  },
+  {
+    path:"about-us",
+    component:AboutUsComponent
+  },
+
+  {
+    path:"contact-us",
+    component:ContactUSComponent
   }
+
+
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
   // { path: '**', redirectTo: '/login' },
     // Add a default route or other routes as needed
