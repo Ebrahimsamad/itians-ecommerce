@@ -27,14 +27,14 @@ export class NavbarComponent {
   handleClickOutside(event: MouseEvent) {
     const searchContainer = document.querySelector('.search-container');
     if (this.searchActive && searchContainer && !searchContainer.contains(event.target as Node)) {
-      this.closeSearch(); // Close the search if clicked outside
+      this.closeSearch(); 
     }
   }
 
   toggleSearch() {
     this.searchActive = !this.searchActive;
     if (this.searchActive) {
-      this.navbarVisible = false; 
+      this.navbarVisible = false;
     }
   }
 
@@ -50,7 +50,7 @@ export class NavbarComponent {
     if (this.searchTerm.trim()) {
       this.router.navigate(['/search'], { queryParams: { q: this.searchTerm } });
       this.searchActive = false;
-      this.searchTerm = ''; 
+      this.searchTerm = '';
     }
   }
 }
