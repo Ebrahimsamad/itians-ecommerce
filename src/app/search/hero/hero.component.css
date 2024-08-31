@@ -1,13 +1,13 @@
 
 
 #welcomImage{
- 
+
     background-size: contain;
     background-repeat: no-repeat;
-    height: 60vh;
+    height: 78vh;
     width: 100%;
     margin: 0;
-  
+
   }
   .typing-container {
     font-family: monospace;
@@ -18,16 +18,15 @@
     display: inline-block;
     height: 1.2em;
   }
-  
+
   .text-center h1{
     color:#2d5356
   }
-  
+
   .span{
     color:#d09423
-  
+
   }
-  
-  
-  
-  
+
+
+

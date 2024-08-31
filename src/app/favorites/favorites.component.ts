@@ -101,7 +101,7 @@ export class FavoritesComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     $('.slider').slick({
       arrows: false,
-      slidesToShow: 3, // Default number of slides to show
+      slidesToShow: 3,
       slidesToScroll: 1,
       infinite: true,
       centerMode: false,
@@ -111,15 +111,15 @@ export class FavoritesComponent implements AfterViewInit {
       autoplaySpeed: 2000,
       responsive: [
         {
-          breakpoint: 1200, // For screens smaller than 768px
+          breakpoint: 1200,
           settings: {
-            slidesToShow: 2, // Show 2 slides
+            slidesToShow: 2,
           }
         },
         {
-          breakpoint: 576, // For screens smaller than 576px
+          breakpoint: 576,
           settings: {
-            slidesToShow: 1, // Show 1 slide
+            slidesToShow: 1, 
           }
         }
       ]

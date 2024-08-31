@@ -1,13 +1,13 @@
 .selected {
     color: #d09423;
-    background-color: #f8f9fa; /* Adjust to your preferred light background */
+    background-color: #f8f9fa; 
   }
-  
+
  .radioSelected{
   border-color: #d09423;
   background-color: #d09423;
  }
-  
+
   .form-check-label {
     cursor: pointer;
   }
@@ -19,7 +19,7 @@
     background: #d09423;
     height: 3px;
   }
-  
+
   ::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer {
     margin-left: -8px;
     position: absolute;
@@ -38,17 +38,17 @@
     margin-left: auto;
     opacity: 1;
   }
-  
+
   ::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer:after {
     display: none;
   }
-  
+
   ::ng-deep .custom-slider .ngx-slider .ngx-slider-model-value,
   ::ng-deep .custom-slider .ngx-slider .ngx-slider-model-high,
   ::ng-deep .custom-slider .ngx-slider .ngx-slider-bubble {
     display: none;
   }
-  
+
   .custom-slider .ngx-slider .ngx-slider-tick {
     width: 1px;
     height: 15px;
