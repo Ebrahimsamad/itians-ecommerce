@@ -30,13 +30,13 @@
           placeholder="search title"
           class="search-input"
         />
-        <button class="search-button" (click)="performSearch()">
+        <button class="search-button" >
           <i class="fas fa-search search-icon"></i>
         </button>
       </div>
       <i
         class="fas fa-search"
-        (click)="toggleSearch()"
+       
         *ngIf="!searchActive"
       ></i>
       <a href="#"><i class="fas fa-heart"></i></a>
@@ -61,6 +61,6 @@
     </div>
 
     <!-- Toggle Menu Button -->
-    <div class="toggle-menu" (click)="toggleNavbar()">☰ Menu</div>
+    <div class="toggle-menu">☰ Menu</div>
   </div>
 </div>

@@ -21,7 +21,7 @@
 .navbar a {
   color: white;
   text-decoration: none;
-  font-size: 19px; /* Fixed font-size property */
+  font-size: 19px; 
   position: relative;
   padding-bottom: 5px;
 }

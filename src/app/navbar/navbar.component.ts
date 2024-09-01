@@ -29,30 +29,24 @@ export class NavbarComponent {
       });
     });
   }
-  @HostListener('document:click', ['$event'])
-  handleClickOutside(event: MouseEvent) {
-    const searchContainer = document.querySelector('.search-container');
-    if (this.searchActive && searchContainer && !searchContainer.contains(event.target as Node)) {
-      this.closeSearch();
-    if (
-      this.searchActive &&
-      searchContainer &&
-      !searchContainer.contains(event.target as Node)
-    ) {
-      this.closeSearch(); // Close the search if clicked outside
-    }
-  }
+  // @HostListener('document:click', ['$event'])
+  // handleClickOutside(event: MouseEvent) {
+  //   const searchContainer = document.querySelector('.search-container');
+  //   if (this.searchActive && searchContainer && !searchContainer.contains(event.target as Node)) {
+  //     this.closeSearch();
 
-  toggleSearch() {
-    this.searchActive = !this.searchActive;
-    if (this.searchActive) {
-      this.navbarVisible = false;
-    }
-  }
+  // }
 
-  closeSearch() {
-    this.searchActive = false;
-  }
+  // toggleSearch() {
+  //   this.searchActive = !this.searchActive;
+  //   if (this.searchActive) {
+  //     this.navbarVisible = false;
+  //   }
+  // }
+
+  // closeSearch() {
+  //   this.searchActive = false;
+  // }
 
   toggleNavbar() {
     this.navbarVisible = !this.navbarVisible;
@@ -68,3 +62,4 @@ export class NavbarComponent {
     }
   }
 }
+
