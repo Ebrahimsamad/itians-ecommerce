@@ -3,13 +3,14 @@
 <div class="container">
     <div class="row no-gutters mt-5">
       <div class="col-md-4 col-lg-3 ">
-        <app-filter></app-filter>
+        <app-filter [categories]="categories" (filterChanged)="onFilterChange($event)"></app-filter>
       </div>
       <div class="col-md-8 col-lg-9 col-12 mb-5 ">
-        <app-product-list></app-product-list>
+        <app-product-list [products]="products"></app-product-list>
       </div>
     </div>
   </div>
   <app-hero></app-hero>
   <app-icons></app-icons>
 
+  
