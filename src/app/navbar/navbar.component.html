@@ -48,13 +48,15 @@
           class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white"
           style="background-color: #d09423;"
         >
-          <!-- {{ totalCartItems }} -->
+       
         2</span>
       </a>
-      <a href="#"><i class="fas fa-user"></i></a>
-    </div>
+      <a href="#">
+        <img [src]="userImage" alt="User Image" class="user-image" />
 
-    <!-- Toggle Menu Button -->
+      </a>
+
+
     <div class="toggle-menu" (click)="toggleNavbar()">☰ Menu</div>
   </div>
 </div>

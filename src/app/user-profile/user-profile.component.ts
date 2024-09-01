@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
 import { PasswordService } from '../password.service';
+import { UserImageService } from '../user-image.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,7 +19,9 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private passwordService: PasswordService
+    private passwordService: PasswordService,
+    private userImageService : UserImageService
+
   ) {
     this.userProfileForm = this.fb.group({
       name: [''],
@@ -49,9 +52,12 @@ export class UserProfileComponent implements OnInit {
       reader.onload = (e: any) => {
         this.imageSrc = e.target.result;
         this.userProfileForm.patchValue({ image: file });
+        this.userImageService.setUserImage(this.imageSrc);
       };
       reader.readAsDataURL(file);
     }
+
+
   }
 
   enablePasswordFields(): void {
@@ -73,6 +79,7 @@ export class UserProfileComponent implements OnInit {
     this.userProfileForm.get('confirmPassword')?.disable();
     this.userProfileForm.get('name')?.enable();
     this.userProfileForm.get('image')?.enable();
+    this.loadUserData();
 
   }
 
@@ -130,4 +137,6 @@ export class UserProfileComponent implements OnInit {
       }
     });
   }
+
+
 }

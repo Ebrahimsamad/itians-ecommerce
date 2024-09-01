@@ -3,6 +3,8 @@ import { Component, HostListener, NgModule } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { UserImageService } from '../user-image.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+  userImage: string="";
+  constructor(private router: Router,private userImageService: UserImageService) {}
 
   searchActive = false;
   navbarVisible = false;
@@ -21,13 +24,16 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       this.searchActive = false;
+      this.userImageService.userImage$.subscribe((imageSrc) => {
+        this.userImage = imageSrc;
+      });
     });
   }
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent) {
     const searchContainer = document.querySelector('.search-container');
     if (this.searchActive && searchContainer && !searchContainer.contains(event.target as Node)) {
-      this.closeSearch(); 
+      this.closeSearch();
     }
   }
 
