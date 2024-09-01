@@ -1,53 +1,85 @@
 import { NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { DiscountPipe } from '../pipe/discount.pipe';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
+import { DiscountPipe } from '../pipe/discount.pipe';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [NgClass, NgStyle, DiscountPipe,DiscountBadgePipe,NgIf],
+  imports: [NgClass, NgStyle, NgIf, DiscountBadgePipe, DiscountPipe],
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input() product: any;
-  favorites: any[] = [
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    }
-  ];
+  favoriteProducts: any[] = [];
+  cartProducts: any[] = [];
 
-  constructor() {
-    
-  }ngOnInit() {
-    console.log(this.product); // التحقق من أن البيانات تصل إلى البطاقة
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.loadFavoriteProducts();
+    this.loadCartProducts();
+  }
+
+  loadFavoriteProducts(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (user && user.favourite) {
+      this.favoriteProducts = user.favourite;
+    }
+  }
+
+  loadCartProducts(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (user && user.cart) {
+      this.cartProducts = user.cart;
+    }
   }
 
   isFavorite(): boolean {
-    return this.favorites.some(fav => fav.id === this.product.id);
+    return this.favoriteProducts.some((fav) => fav._id === this.product._id);
   }
 
-  toggleFavorite(product: any): void {
-    const index = this.favorites.findIndex(fav => fav.id === product.id);
-    if (index !== -1) {
-      this.favorites.splice(index, 1);
-    } else {
-      this.favorites.push(this.product);
-    }
-    // Handle back-end logic
+  toggleFavorite(): void {
+    const productId = this.product._id;
+
+    this.authService.toggleFavourite(productId).subscribe({
+      next: (response) => {
+        this.favoriteProducts = response.favourites;
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            ...JSON.parse(localStorage.getItem('user') || '{}'),
+            favourite: response.favourites,
+          })
+        );
+      },
+      error: (err) => console.error('Error toggling favorite:', err),
+    });
   }
 
   getIconClass(): string {
     return this.isFavorite() ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
   }
 
-  addToCart(product: any) {
-    // Handle back-end logic
-    console.log(product);
+  addToCart(): void {
+    if (
+      !this.cartProducts.some((cartItem) => cartItem._id === this.product._id)
+    ) {
+      this.cartProducts.push(this.product);
+
+      localStorage.setItem(
+        'user',
+        JSON.stringify({
+          ...JSON.parse(localStorage.getItem('user') || '{}'),
+          cart: this.cartProducts,
+        })
+      );
+
+      console.log('Product added to cart:', this.product);
+    } else {
+      console.log('Product already in cart:', this.product);
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { SliderImageComponent } from "../slider-image/slider-image.component";
-import { ImageDesginComponent } from "../image-desgin/image-desgin.component";
+import { SliderImageComponent } from '../slider-image/slider-image.component';
+import { ImageDesginComponent } from '../image-desgin/image-desgin.component';
 declare var $: any;
 
 @Component({
@@ -8,10 +8,15 @@ declare var $: any;
   standalone: true,
   imports: [SliderImageComponent, ImageDesginComponent],
   templateUrl: './designimage.component.html',
-  styleUrls: ['./designimage.component.css']
+  styleUrls: ['./designimage.component.css'],
 })
-export class DesignimageComponent  {
-  texts: string[] = ['Enjoy with us','To ITIANS','Explore the Latest', 'Shop the Best '];
+export class DesignimageComponent {
+  texts: string[] = [
+    'Enjoy with us',
+    'To ITIANS',
+    'Explore the Latest',
+    'Shop the Best ',
+  ];
   typingSpeed: number = 100;
   erasingSpeed: number = 50;
   pauseBetweenTexts: number = 1500;
@@ -22,24 +27,27 @@ export class DesignimageComponent  {
   private isTyping: boolean = true;
   private intervalId: any;
 
-
   ngOnInit() {
     this.startTypingEffect();
   }
 
   startTypingEffect() {
-    this.intervalId = setInterval(() => {
-      if (this.isTyping) {
-        this.type();
-      } else {
-        this.erase();
-      }
-    }, this.isTyping ? this.typingSpeed : this.erasingSpeed);
+    this.intervalId = setInterval(
+      () => {
+        if (this.isTyping) {
+          this.type();
+        } else {
+          this.erase();
+        }
+      },
+      this.isTyping ? this.typingSpeed : this.erasingSpeed
+    );
   }
 
   type() {
     if (this.currentCharIndex < this.texts[this.currentTextIndex].length) {
-      this.displayedText += this.texts[this.currentTextIndex][this.currentCharIndex];
+      this.displayedText +=
+        this.texts[this.currentTextIndex][this.currentCharIndex];
       this.currentCharIndex++;
     } else {
       this.isTyping = false;
@@ -59,8 +67,4 @@ export class DesignimageComponent  {
       setTimeout(() => this.startTypingEffect(), this.pauseBetweenTexts);
     }
   }
-
-
-
-
 }

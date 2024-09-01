@@ -13,7 +13,7 @@
       style="box-shadow: none"
     >
       <a routerLink="/" routerLinkActive="active-link">Home</a>
-      <a class="nav-link" routerLink="/products" routerLinkActive="active">
+      <a class="nav-link" routerLink="/product" routerLinkActive="active">
         Products</a
       >
       <a routerLink="/categories" routerLinkActive="active-link">Categories</a>
@@ -40,18 +40,24 @@
         *ngIf="!searchActive"
       ></i>
       <a href="#"><i class="fas fa-heart"></i></a>
-      <a href="#" class="position-relative"
-      routerLink="/cart" routerLinkActive="active-route"
+      <a
+        href="#"
+        class="position-relative"
+        routerLink="/cart"
+        routerLinkActive="active-route"
       >
         <i class="fa-solid fa-cart-shopping"></i>
         <span
           class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white"
-          style="background-color: #d09423;"
+          style="background-color: #d09423"
         >
           <!-- {{ totalCartItems }} -->
-        2</span>
+          2</span
+        >
       </a>
-      <a href="#"><i class="fas fa-user"></i></a>
+      <a routerLink="/login" routerLinkActive="active-route"
+        ><i class="fas fa-user"></i
+      ></a>
     </div>
 
     <!-- Toggle Menu Button -->

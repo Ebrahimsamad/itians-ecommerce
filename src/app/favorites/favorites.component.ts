@@ -1,135 +1,46 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
-import { NgFor } from '@angular/common';
-declare var $: any;
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [CardComponent,NgFor],
+  imports: [CommonModule, CardComponent],
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css'],
 })
-export class FavoritesComponent implements AfterViewInit {
-  products  = [
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock1",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock3",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-    {
-      id: 2,
-      title: "Z-bock",
-      image: "https://ik.imagekit.io/7ksxy0uxk/e-commerce/jj.png?updatedAt=1724415623157",
-      price: 9.99,
-      discountPercentage: 7.17
-    },
-  ];
+export class FavoritesComponent implements OnInit {
+  favoriteProducts: any[] = [];
 
-  ngAfterViewInit(): void {
-    $('.slider').slick({
-      arrows: false,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      infinite: true,
-      centerMode: false,
-      initialSlide: 0,
-      swipeToSlide: true,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      responsive: [
-        {
-          breakpoint: 1200,
-          settings: {
-            slidesToShow: 2,
-          }
-        },
-        {
-          breakpoint: 576,
-          settings: {
-            slidesToShow: 1, 
-          }
-        }
-      ]
-    });
+  constructor(private authService: AuthService) {}
 
-    $('.prev').click(() => {
-      $('.slider').slick('slickPrev');
+  ngOnInit(): void {
+    this.loadFavoriteProducts();
+  }
+
+  private loadFavoriteProducts(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (user?.favourite) {
+      this.favoriteProducts = user.favourite;
+    }
+  }
+
+  toggleFavorite(product: any): void {
+    this.authService.toggleFavourite(product._id).subscribe({
+      next: (response) => {
+        this.favoriteProducts = response.favourites;
+        this.updateLocalStorage(response.favourites);
+      },
+      error: (err) => console.error('Error toggling favorite:', err),
     });
-    $('.next').click(() => {
-      $('.slider').slick('slickNext');
-    });
+  }
+
+  private updateLocalStorage(favourites: any[]): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    localStorage.setItem(
+      'user',
+      JSON.stringify({ ...user, favourite: favourites })
+    );
   }
 }

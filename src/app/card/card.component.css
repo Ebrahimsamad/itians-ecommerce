@@ -1,104 +1,140 @@
 .product-card {
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    background-color: white;
-  }
-  
-  .discount-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #2C6D68;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 50px;
-    font-size: 14px;
-  }
-  
-  .favorite-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 25px;
-    background-color: white;
-    padding: 5px 10px;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  max-width: 100%;
+  position: relative;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  background-color: #2d5356;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: 0.3s all;
+}
+
+.discount-badge:hover {
+  background-color: #2d5356;
+  border-color: #2d5356;
+  cursor: pointer;
+  background-color: #d09423;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1;
+}
+
+.favorite-btn i {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn:hover i {
+  background-color: #f1d8d8;
+}
+
+.favorite-btn:hover i {
+  color: red;
+}
+
+.product-img-container {
+  height: 150px;
+  padding: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-img {
+  max-height: 100%;
+  width: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.product-pricing p {
+  margin-bottom: 0;
+}
+
+.product-pricing .text-danger {
+  color: #d09423 !important;
+}
+
+.btn-warning {
+  background-color: #d09423;
+  border-color: #d09423;
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #2d5356;
+  border-color: #2d5356;
+  color: #ffffff;
+}
+
+.btn-warning .fa-cart-shopping {
+  color: inherit;
+}
+
+@media (max-width: 767px) {
   .product-img-container {
-    height: 350px;
+    height: 180px;
   }
-  
-  .product-img {
-    width: 100%;
-    height: auto;
+
+  .product-title {
+    font-size: 1rem;
   }
-  
-  .top-content {
-    padding: 15px;
-    position: relative;
-    z-index: 2;
-    transition: opacity 0.2s ease;
+
+  .product-pricing .text-danger {
+    font-size: 1.2rem;
   }
-  
-  .bottom-content {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    background-color: #d09423;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    transition: left 0.3s ease;
-    z-index: 1;
-    height: 100%;
-    box-sizing: border-box;
+
+  .btn-warning {
+    font-size: 0.9rem;
   }
-  
-  .card-body:hover .top-content {
-    opacity: 0;
+}
+
+@media (max-width: 576px) {
+  .product-img-container {
+    height: 150px;
   }
-  
-  .card-body:hover .bottom-content {
-    left: 0;
+
+  .product-title {
+    font-size: 0.9rem;
   }
-  
-  .card-body {
-    position: relative;
-    background-color: #2d5356;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
+
+  .product-pricing .text-danger {
+    font-size: 1rem;
   }
-  
-  .cart-btn {
-    background-color: #ffffff;
-    color: #d09423;
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease;
+
+  .btn-warning {
+    font-size: 0.8rem;
   }
-  
-  .cart-btn-hover {
-    background-color: #ffffff;
-    color: #2d5356;
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
+}
