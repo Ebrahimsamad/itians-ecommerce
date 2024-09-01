@@ -31,7 +31,7 @@ export class NavbarComponent {
       searchContainer &&
       !searchContainer.contains(event.target as Node)
     ) {
-      this.closeSearch();
+      this.closeSearch(); // Close the search if clicked outside
     }
   }
 
