@@ -23,9 +23,9 @@ export class CardComponent {
   ];
 
   constructor() {
-    
+
   }ngOnInit() {
-    console.log(this.product); // التحقق من أن البيانات تصل إلى البطاقة
+    console.log(this.product); 
   }
 
   isFavorite(): boolean {

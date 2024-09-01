@@ -12,6 +12,7 @@ import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUSComponent } from './contact-us/contact-us.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -44,7 +45,14 @@ const routes: Routes = [
   {
     path:"contact-us",
     component:ContactUSComponent
+  },
+
+  {
+    path:"UserProfile",
+    component:UserProfileComponent
   }
+
+
 
 
   // { path: '', redirectTo: '/login', pathMatch: 'full' },

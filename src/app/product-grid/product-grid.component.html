@@ -1,38 +1,6 @@
-<div class="product-grid row g-4">
-  <div class="col-12 col-md-4 col-lg-4" *ngFor="let product of products">
-      <div class="card product-card">
-          <div class="discount-badge" *ngIf="product.discountPercentage">
-              {{ product.price | discountBadge:product.discountPercentage }}
-          </div>
-          <div class="favorite-btn" (click)="toggleFavorite(product)">
-              <i [ngClass]="getIconClass(product)" [ngStyle]="{'color': isFavorite(product) ? 'red' : 'black'}"></i>
-          </div>
+<div class="d-flex">
+<div  *ngFor="let product of products ">
 
-          <div class="d-flex justify-content-center align-items-center bg-light product-img-container">
-              <img [src]="product.thumbnail" alt="{{ product.name }}" class="product-img img-fluid">
-          </div>
-
-          <div class="card-body">
-              <div class="top-content">
-                  <h5 class="product-title">{{ product.title }}</h5>
-                  <div class="price-info d-flex align-items-center">
-                      <p class="discounted-price mb-0">
-                          {{ (product.price | discount:product.discountPercentage).split(' ')[1] }}
-                      </p>
-                      <p class="original-price mb-0 mx-2" [ngClass]="{'text-decoration-line-through text-danger': product.discountPercentage}">
-                          {{ (product.price | discount:product.discountPercentage).split(' ')[0] }}
-                      </p>
-                  </div>
-              </div>
-              <div class="bottom-content d-flex align-items-center justify-content-between">
-                  <div class="btn cart-btn">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                  </div>
-                  <div class="text-content text-white">
-                      <h3>Add to cart</h3>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <app-card [product]="product"></app-card>
   </div>
 </div>
