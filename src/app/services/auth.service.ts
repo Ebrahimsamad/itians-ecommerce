@@ -76,11 +76,39 @@ export class AuthService {
   }
   // * End of Forget and Reset Password * //
 
+  // ! Start Handle Favourite cart
+  toggleFavourite(
+    productId: string
+  ): Observable<{ message: string; favourites: any[] }> {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error('No token found. Please log in.');
+      return throwError(() => new Error('No token provided'));
+    }
+
+    const headers = { Authorization: token };
+
+    return this.http.post<{ message: string; favourites: any[] }>(
+      `${this.apiUrl}/favourite/${productId}`,
+      {},
+      { headers }
+    );
+  }
+
+  getFavoriteProducts(productIds: string[]): Observable<any[]> {
+    return this.http.post<any[]>(`${this.apiUrl}/products`, {
+      ids: productIds,
+    });
+  }
+
+  // ! End Handle Favourite cart
+
   private handleAuthentication(token: string, user: object): void {
-    localStorage.setItem('token', 'Bearer ' + token);
+    localStorage.setItem('token', `Bearer ${token}`);
     localStorage.setItem('user', JSON.stringify(user));
     this.isAuthenticated.next(true);
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/']);
   }
 
   private checkAuthStatus(): void {

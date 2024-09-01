@@ -37,8 +37,7 @@
 
         @if (product.discountPercentage > 0) {
         <p class="discounted-price">
-            <i class="fa-solid fa-badge-percent"></i> Discounted Price: {{ product.price | discountPrice:
-            product.discountPercentage }} EGP
+            <i class="fa-solid fa-badge-percent"></i> Discounted Price: {{ product.price }} EGP
         </p>
         } @else {
         <p class="price">{{ product.price }} EGP</p>

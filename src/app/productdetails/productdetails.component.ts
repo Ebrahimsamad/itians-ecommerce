@@ -10,9 +10,9 @@ import { CartService } from '../../service/cart.service';
 @Component({
   selector: 'app-productdetails',
   standalone: true,
-  imports: [CommonModule,FormsModule, DiscountPricePipe],
+  imports: [CommonModule, FormsModule, DiscountPricePipe],
   templateUrl: './productdetails.component.html',
-  styleUrl: './productdetails.component.css'
+  styleUrl: './productdetails.component.css',
 })
 export class ProductdetailsComponent {
   product!: Product;
@@ -20,40 +20,46 @@ export class ProductdetailsComponent {
   selectedImage: string = '';
   favorites: Product[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router
-    , private productService: ProductService, private cartService: CartService
-  ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.productService.getProductById(+id).subscribe(data => {
+      this.productService.getProductById(+id).subscribe((data) => {
         this.product = data;
         if (this.product && this.product.images.length > 0) {
           console.log('Product loaded:', this.product);
           this.quantity = 1;
-          this.selectedImage = this.product.images[0] ;
+          this.selectedImage = this.product.images[0];
         } else {
           console.error('Product not found or no images available');
         }
       });
     }
-}
-get savedAmount(): number {
-  const discount = (this.product.discountPercentage / 100) * this.product.price;
-  return discount;
-}
+  }
+  get savedAmount(): number {
+    const discount =
+      (this.product.discountPercentage / 100) * this.product.price;
+    return discount;
+  }
   selectImage(index: number) {
     this.selectedImage = this.product.images[index];
   }
 
   prevImage() {
     const currentIndex = this.product.images.indexOf(this.selectedImage);
-    const prevIndex = (currentIndex === 0) ? this.product.images.length - 1 : currentIndex - 1;
+    const prevIndex =
+      currentIndex === 0 ? this.product.images.length - 1 : currentIndex - 1;
     this.selectedImage = this.product.images[prevIndex];
   }
   nextImage() {
     const currentIndex = this.product.images.indexOf(this.selectedImage);
-    const nextIndex = (currentIndex === this.product.images.length - 1) ? 0 : currentIndex + 1;
+    const nextIndex =
+      currentIndex === this.product.images.length - 1 ? 0 : currentIndex + 1;
     this.selectedImage = this.product.images[nextIndex];
   }
   getStockStatus(): string {
@@ -64,25 +70,24 @@ get savedAmount(): number {
     return this.product?.stock > 0 ? 'in-stock' : 'out-of-stock';
   }
 
-  getStars(rating: number): { fullArray: number[], half: boolean } {
+  getStars(rating: number): { fullArray: number[]; half: boolean } {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5;
     return { fullArray: Array(fullStars).fill(0), half: halfStar };
   }
 
   isFavorite(): boolean {
-    return this.favorites.some(fav => fav.id === this.product.id);
+    return this.favorites.some((fav) => fav.id === this.product.id);
   }
 
   toggleFavorite(product: any): void {
-    const index = this.favorites.findIndex(fav => fav.id === product.id);
+    const index = this.favorites.findIndex((fav) => fav.id === product.id);
     if (index !== -1) {
       this.favorites.splice(index, 1);
-      console.log("notadded")
-
+      console.log('notadded');
     } else {
       this.favorites.push(this.product);
-      console.log("added")
+      console.log('added');
     }
     // Handle back-end logic
   }
