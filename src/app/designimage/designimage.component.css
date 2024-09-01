@@ -1,17 +1,14 @@
-
 .section {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 40px;
-  background-color: #2d5356
-  ;
+  background-color: #2d5356;
   color: #ffffff;
   gap: 30px;
 }
 
-
-.text-section {
+z .text-section {
   width: 100%;
   max-width: 45%;
 }
@@ -43,10 +40,9 @@
   border-radius: 10px;
 }
 
-
 .shop-now {
   background-color: #d09423;
-  color:white;
+  color: white;
   padding: 15px 30px;
   border: none;
   cursor: pointer;
@@ -58,10 +54,9 @@
 
 .shop-now:hover {
   background-color: white;
-  color:#d09423;
+  color: #d09423;
   transform: translateY(-3px);
 }
-
 
 .slider-container {
   position: relative;
@@ -86,7 +81,6 @@
 .slider img:hover {
   transform: scale(1.05);
 }
-
 
 @media (max-width: 1024px) {
   .section {
@@ -129,7 +123,6 @@
   }
 }
 
-
 .typing-container {
   font-family: monospace;
   font-size: 8px;
@@ -139,5 +132,3 @@
   display: inline-block;
   height: 1.2em;
 }
-
-

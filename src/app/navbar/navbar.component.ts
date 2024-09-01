@@ -9,9 +9,9 @@ import { UserImageService } from '../user-image.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [NgIf,NgClass, RouterLink,FormsModule],
+  imports: [NgIf, NgClass, RouterLink, FormsModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
   userImage: string="";
@@ -34,6 +34,12 @@ export class NavbarComponent {
     const searchContainer = document.querySelector('.search-container');
     if (this.searchActive && searchContainer && !searchContainer.contains(event.target as Node)) {
       this.closeSearch();
+    if (
+      this.searchActive &&
+      searchContainer &&
+      !searchContainer.contains(event.target as Node)
+    ) {
+      this.closeSearch(); // Close the search if clicked outside
     }
   }
 
@@ -54,7 +60,9 @@ export class NavbarComponent {
 
   performSearch() {
     if (this.searchTerm.trim()) {
-      this.router.navigate(['/search'], { queryParams: { q: this.searchTerm } });
+      this.router.navigate(['/search'], {
+        queryParams: { q: this.searchTerm },
+      });
       this.searchActive = false;
       this.searchTerm = '';
     }

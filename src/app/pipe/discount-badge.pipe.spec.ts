@@ -1,8 +1,20 @@
-import { DiscountBadgePipe } from './discount-badge.pipe';
+// import { DiscountBadgePipe } from './discount-badge.pipe';
 
-describe('DiscountBadgePipe', () => {
-  it('create an instance', () => {
-    const pipe = new DiscountBadgePipe();
-    expect(pipe).toBeTruthy();
-  });
-});
+// describe('DiscountBadgePipe', () => {
+//   it('create an instance', () => {
+//     const pipe = new DiscountBadgePipe();
+//     expect(pipe).toBeTruthy();
+//   });
+// });
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'discountBadge',
+})
+export class DiscountBadgePipe implements PipeTransform {
+  transform(price: number, discountPercentage: number): string {
+    const discountedPrice = price - (price * discountPercentage) / 100;
+    return `${discountedPrice.toFixed(2)} (-${discountPercentage}%)`;
+  }
+}

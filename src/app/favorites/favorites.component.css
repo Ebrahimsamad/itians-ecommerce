@@ -1,24 +1,91 @@
 .favorites-page {
   padding: 20px;
+  background-image: url("/path-to-your-image"); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
+.favorite-sidebar {
+  border-radius: 20px;
+  background-color: rgba(45, 83, 86, 0.9); /* Semi-transparent for blending */
+  padding: 40px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 .slider-container {
-  position: relative;
+  padding: 20px;
 }
-.slider-nav {
-  
-  width: 100%;
+
+.slider-container .row {
+  margin-right: 0;
+  margin-left: 0;
 }
+
+.favorite-card {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Semi-transparent white for a softer look */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 15px;
+  text-align: center;
+  min-height: 350px; /* Set a minimum height for consistency */
+}
+
+.favorite-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.favorite-card h5 {
+  color: #2d5356;
+  font-weight: bold;
+  font-size: 1.5rem; /* Slightly larger font */
+  margin-bottom: 10px;
+}
+
+.favorite-card p {
+  color: #d09423;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.head {
+  color: #d09423;
+}
+
 .nav-btn {
   background: transparent;
   border: none;
   font-size: 1.5em;
+  color: #d09423;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
-.card {
-  width: 200px;
-  margin: 0 10px;
+
+.nav-btn:hover {
+  transform: scale(1.2);
 }
-.slick-slide {
-  display: flex;
-  justify-content: center; /* Center the cards */
+
+@media (max-width: 768px) {
+  .favorite-sidebar {
+    margin-bottom: 20px;
+  }
+
+  .favorite-card {
+    margin-bottom: 20px;
+  }
 }

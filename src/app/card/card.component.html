@@ -1,39 +1,56 @@
-<div class="card product-card">
-  <div class="discount-badge" *ngIf="product.discountPercentage ?? 0">
-    {{ product.price | discountBadge:(product.discountPercentage ?? 0) }}
-  </div>
-  <div class="favorite-btn" (click)="toggleFavorite(product)">
-    <i [ngClass]="getIconClass()" [ngStyle]="{'color': isFavorite() ? 'red' : 'black'}"></i>
-  </div>
-
-  <div class="d-flex justify-content-center align-items-center bg-light product-img-container">
-    <img [src]="product.image" [alt]="product.title" class="product-img img-fluid">
+<div class="card product-card shadow-sm">
+  <div
+    class="badge badge-warning discount-badge animate__animated animate__bounceIn"
+    *ngIf="product.discountPercentage"
+  >
+    {{ product.price | discountBadge : product.discountPercentage }}
   </div>
 
-  <div class="card-body d-flex justify-content-between">
-    <div class="top-content d-flex justify-content-between w-100">
-      <div class="text-white">
-        <h5>{{product.title}}</h5>
-        <div class="fw-bold text-end d-flex">
-          <p class="text-white fs-5 mb-0">
-            {{ (product.price | discount:(product.discountPercentage ?? "")).split(' ')[1] }}
-          </p>
-          <p class="mb-0 mx-2" [ngClass]="{'text-decoration-line-through text-danger': product.discountPercentage??0}">
-            {{ (product.price | discount:(product.discountPercentage ?? "")).split(' ')[0] }}
-          </p>
-        </div>
-      </div>
-      <div class="btn cart-btn">
-        <i class="fa-solid fa-cart-shopping"></i>
-      </div>
+  <div class="favorite-btn" (click)="toggleFavorite()">
+    <i
+      [ngClass]="getIconClass()"
+      [ngStyle]="{ color: isFavorite() ? 'red' : 'black' }"
+    ></i>
+  </div>
+
+  <div
+    class="d-flex justify-content-center align-items-center bg-light product-img-container"
+  >
+    <img
+      [src]="product.image"
+      [alt]="product.title"
+      class="product-img img-fluid animate__animated animate__fadeIn"
+    />
+  </div>
+
+  <div class="card-body text-center">
+    <h5 class="product-title text-dark animate__animated animate__fadeInDown">
+      {{ product.title }}
+    </h5>
+
+    <div
+      class="product-pricing d-flex justify-content-center align-items-center"
+    >
+      <p class="text-danger fw-bold fs-5 mb-0">
+        {{
+          (product.price | discount : product.discountPercentage).split(" ")[1]
+        }}
+      </p>
+      <p
+        class="text-muted text-decoration-line-through ms-2 mb-0"
+        *ngIf="product.discountPercentage"
+      >
+        {{
+          (product.price | discount : product.discountPercentage).split(" ")[0]
+        }}
+      </p>
     </div>
-    <div class="bottom-content">
-      <div class="btn cart-btn-hover">
-        <i class="fa-solid fa-cart-shopping"></i>
-      </div>
-      <div class="text-white">
-        <h3>Add to cart</h3>
-      </div>
-    </div>
+
+    <button
+      class="btn btn-warning mt-3 w-100 animate__animated animate__fadeInUp"
+      (click)="addToCart()"
+    >
+      <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
+    </button>
   </div>
 </div>

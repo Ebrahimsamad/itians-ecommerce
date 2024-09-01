@@ -1,203 +1,89 @@
 /* Center-align the product image */
 .product-image {
-    text-align: center;
+  text-align: center;
 }
+
 /* Main product image styling */
 .product-image img {
-    background-color: #e8e4e4;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for a more luxurious feel */
+  background-color: #e8e4e4;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for a more luxurious feel */
 }
+
 /* Thumbnail styling */
 .product-image .img-thumbnail {
-    width: 60px;
-    cursor: pointer;
-    border-radius: 5px; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 60px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 /* Thumbnail hover effect */
 .product-image .img-thumbnail:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Highlight active thumbnail */
+/* Highlight the active thumbnail */
 .product-image .img-thumbnail.active {
-    border: 2px solid#e6a23c
-    ;
-}
-.text-center {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 30px 30px 0 0;
+  border: 2px solid #e6a23c;
 }
 
-/* تعديل رؤوس الجدول */
-.table thead th {
-    background-color: #35524A;
-    color: white;
-    text-align: left;
-    padding: 10px;
-    font-weight: bold;
-   
+/* Nav tabs hover effect */
+.nav-tabs .nav-link:hover {
+  transform: scale(1.1);
 }
 
-/* تعديل خلايا الصفوف */
-.table tbody td {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    padding: 10px;
-    text-align: left;
-}
-
-/* ألوان الصفوف المتعاقبة */
-.table tbody tr:nth-child(even) td {
-    background-color: #ffffff;
-}
-
-/* تخصيص عرض الأعمدة */
-.table tbody td:first-child {
-    width: 50%; /* عرض العمود الأول */
-}
-
-.table tbody td:last-child {
-    width: 50%; /* عرض العمود الثاني */
-}
-
-/* Coupon styling */
-.coupon {
-    background-color: #000;
-    color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-}
-
-/* Coupon hover effect */
-.coupon:hover {
-    background-color: #333;
-}
-
-/* Coupon text and code styling */
-.coupon .coupon-text h5 {
-    font-weight: bold;
-    margin-bottom: 0;
-}
-
-.coupon .coupon-code {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #f0ad4e;
-}
-.text-{
-    color: #f0ad4e;
-}
-.product-meta {
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-.product-meta p {
-    margin-bottom: 12px;
-    font-size: 1rem;
-}
-.product-meta p strong {
-    color: #2d5356;
-    font-weight: bold;
-}
-.product-meta .badge {
-    background-color: #d09423;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-.product-meta .badge.me-1 {
-    margin-right: 5px;
-}
-.reviews h5 {
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-.reviews .mb-4 {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-}
-/* Button styles for consistency */
-.btn-warning {
-    background-color: #f0ad4e;
-    border-color: #f0ad4e;
-    color: #fff;
-}
-.btn-warning:hover {
-    background-color: #e6a23c
-    ;
-    border-color: #e6a23c;
-}
-input[type="number"] {
-    max-width: 60px;
-    text-align: center;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-.container {
-    max-width: 1600px;
-box-sizing: border-box ;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-/* Tab Content Styling */
-.tab-content .tab-pane {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    justify-content: center;
-    background-color: #fff;
-}
-.nav-tabs {
-    display: flex;
-    justify-content: center; 
-    margin-bottom: 40px;
-   
-}
-/* Styling for Tab Headers */
-.nav-tabs .nav-link {
-    appearance: none;
+/* Tab content styling */
+.tab-content {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 15px;
   background-color: #fff;
-  border-radius: 24px;
-  border-style: none;
-  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-  box-sizing: border-box;
-  color: #3c4043;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling for Buy Now and Add To Cart */
+.btn-warning {
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+
+.btn-warning:hover {
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+
+/* Favorite button icon */
+.favorite-btn i {
   cursor: pointer;
-  display: inline-flex;
-   font-size: 14px;
-  font-weight: 500;
-  height: 48px;
-  justify-content: center;
- 
-  text-align: center;
-  text-transform: none;
-  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
- 
-
-}
-/* Active tab styling */
-.nav-tabs .nav-link.active {
-    color:#f0ad4e; 
-    background-color:#fff ;
-    border: 1px solid #f0ad4e;
-}
-.nav-tabs .nav-link:hover{
-    scale: 1.3;
-
+  font-size: 24px;
 }
 
-/* Consistent styling for buttons in the tab content */
-.tab-content .btn {
-    margin: 5px 0;
+/* Product review section */
+.reviews {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews strong {
+  font-size: 16px;
+}
+
+/* Product details table */
+.table-bordered {
+  margin-top: 20px;
+}
+
+.table-bordered th {
+  background-color: #e6a23c;
+  color: #fff;
+}
+
+.table-bordered td {
+  vertical-align: middle;
 }
