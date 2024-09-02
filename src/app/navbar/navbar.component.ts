@@ -1,34 +1,35 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { LocalStorageService } from '../service/local-storage.service';
 import { NgClass, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { UserImageService } from '../user-image.service';
 import { AuthService } from '../services/auth.service';
+import { LocalStorageService } from '../service/local-storage.service';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [NgIf, NgClass, RouterLink, FormsModule],
-  templateUrl: './navbar.component.html',
+templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  userImage: string = '';
   searchActive = false;
   navbarVisible = false;
   searchTerm: string = '';
-  totalCartItems = 0;
   isAuthenticated: boolean = false;
-
-  constructor(
-    private router: Router,
-    private localStorageService: LocalStorageService
-  ) {}
+  totalCartItems:number=0
+  constructor(private router: Router, private userImageService: UserImageService, private authService: AuthService ,private localStorageService:LocalStorageService) {}
 
   ngOnInit(): void {
-    this.updateCartItemCount();
+    this.userImageService.userImage$.subscribe((imageSrc) => {
+      this.userImage = imageSrc;
+    });
 
-    this.localStorageService.getStorageChanges().subscribe(() => {
-      this.updateCartItemCount();
+    this.authService.isAuthenticated$.subscribe((status) => {
+      this.isAuthenticated = status;
     });
 
     this.router.events.subscribe(() => {
@@ -36,15 +37,10 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent) {
     const searchContainer = document.querySelector('.search-container');
-    if (
-      this.searchActive &&
-      searchContainer &&
-      !searchContainer.contains(event.target as Node)
-    ) {
+    if (this.searchActive && searchContainer && !searchContainer.contains(event.target as Node)) {
       this.closeSearch();
     }
   }
@@ -75,8 +71,13 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
   private updateCartItemCount() {
     const cart = this.localStorageService.getItem<any[]>('cart') || [];
     this.totalCartItems = cart.length;
   }
 }
+

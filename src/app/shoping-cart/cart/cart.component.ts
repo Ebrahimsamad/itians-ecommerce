@@ -3,16 +3,16 @@ import { LocalStorageService } from './../../service/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CarselComponent } from '../carsel/carsel.component';
 import { CartListService } from '../../service/cart-list.service';
 import { PaymentServiceService } from '../../service/payment-service.service';
+import { CarselComponent } from "../carsel/carsel.component";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   imports: [NgFor, FormsModule, CarselComponent],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'], 
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
   counter = 0;
@@ -58,7 +58,7 @@ export class CartComponent implements OnInit {
 
   decreaseQuantity(id: any) {
     const cartItem = this.carts.find((c) => c.product.id === id);
-    if (cartItem && cartItem.quantity > 1) { 
+    if (cartItem && cartItem.quantity > 1) {
       cartItem.quantity -= 1;
       this.localStorageService.updateQuantityInArray('cart', id, -1, cartItem.productBody);
     } else if (cartItem && cartItem.quantity === 1) {
@@ -101,14 +101,14 @@ export class CartComponent implements OnInit {
       },
       quantity: item.quantity
     }));
-    
+
     this.paymentService.startCheckout(items).subscribe((response) => {
         window.location.href = response.url;
       }, (error) => {
         console.error('Error:', error);
       });
   }
-    
- 
+
+
 }
 
