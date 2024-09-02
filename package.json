@@ -26,6 +26,7 @@
     "emailjs-com": "^3.2.0",
     "hammerjs": "^2.0.8",
     "jquery": "^3.7.1",
+    "mdb-ui-kit": "^7.3.2",
     "ngx-owl-carousel-o": "^18.0.0",
     "ngx-pagination": "^6.0.3",
     "owl.carousel": "^2.3.4",
