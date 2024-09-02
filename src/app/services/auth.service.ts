@@ -12,7 +12,7 @@ export class AuthService {
 
   private isAuthenticated = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticated.asObservable();
-
+  
   constructor(private http: HttpClient, private router: Router) {
     this.checkAuthStatus();
   }
@@ -46,7 +46,6 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  // * Start Forget & Reset Password * //
   forgotPassword(emailData: { email: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/forgetPassword`, emailData).pipe(
       tap(() => console.log('Sending forgot password request:', emailData)),
@@ -74,9 +73,7 @@ export class AuthService {
       .post<{ message: string }>(`${this.apiUrl}/resetPassword`, data)
       .pipe(catchError(this.handleError));
   }
-  // * End of Forget and Reset Password * //
 
-  // ! Start Handle Favourite cart
   toggleFavourite(
     productId: string
   ): Observable<{ message: string; favourites: any[] }> {
@@ -102,7 +99,6 @@ export class AuthService {
     });
   }
 
-  // ! End Handle Favourite cart
 
   private handleAuthentication(token: string, user: object): void {
     localStorage.setItem('token', `Bearer ${token}`);

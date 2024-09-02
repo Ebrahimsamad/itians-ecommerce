@@ -11,15 +11,13 @@ import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUSComponent } from './contact-us/contact-us.component';
+import { CartComponent } from './shoping-cart/cart/cart.component';
+import { OrderCompleteComponent } from './order-complete/order-complete.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
-  // {
-  //   path: 'dashboard',
-  //   component: DashboardComponent,
-  //   canActivate: [AuthGuard],
-  // },
+
   { path: 'forgetPassword', component: ForgotPasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
 
@@ -44,11 +42,20 @@ const routes: Routes = [
     path: 'contact-us',
     component: ContactUSComponent,
   },
+  {
+    path:'cart',
+    component:CartComponent
+  },
+  {
+    path:'complete',
+    component: OrderCompleteComponent,
+  },
+  {
+    path:'cancel',
+    component:CartComponent
+  }
 
-  // { path: '', redirectTo: '/login', pathMatch: 'full' },
-  // { path: '**', redirectTo: '/login' },
-  // Add a default route or other routes as needed
-  // { path: '', redirectTo: '/admin', pathMatch: 'full' },
+ 
 ];
 
 export { routes };

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid m-5">
   <div class="row">
     <div class="col-lg-8">
       <table class="cart-table">
@@ -7,27 +7,26 @@
             <th style="font-weight: bold; border-top-left-radius: 10px">
               Product
             </th>
-            <th>Category</th>
+            <th>title</th>
             <th>Quantity</th>
             <th>Price</th>
             <th style="font-weight: bold; border-top-right-radius: 10px"></th>
           </tr>
         </thead>
       </table>
-      @for (cart of carts; track cart.id) {
+      @for (cart of carts; track cart.product.id) {
       <div class="card mb-3">
         <div class="row g-0 align-items-center">
           <div class="col-12 col-md-2 d-flex justify-content-center">
             <img
-              [src]="cart.thumbnail"
+              [src]="cart.productBody.image"
               class="img-fluid rounded-start"
               alt="Product Image"
             />
           </div>
           <div class="col-12 col-md-4 d-flex align-items-center text-center">
             <div class="card-body">
-              <h5 class="card-title">{{ cart.title }}</h5>
-              <p class="card-text">{{ cart.category }}</p>
+              <h5 class="card-title">{{ cart.productBody.title }}</h5>
             </div>
           </div>
           <div
@@ -47,7 +46,7 @@
                   align-items: center;
                   justify-content: center;
                 "
-                (click)="increaseQuantity(cart.id)"
+                (click)="increaseQuantity(cart.product.id)"
               >
                 +
               </button>
@@ -61,7 +60,7 @@
               />
               <button
                 class="btn"
-                (click)="decreaseQuantity(cart.id)"
+                (click)="decreaseQuantity(cart.product.id)"
                 type="button"
                 id="button"
                 style="
@@ -82,7 +81,7 @@
           <div
             class="col-12 col-md-2 d-flex align-items-center justify-content-center"
           >
-            <span class="fw-bold price">{{ cart.price }} EGP</span>
+            <span class="fw-bold price">{{ cart.productBody.price }} EGP</span>
           </div>
 
           <div
@@ -90,7 +89,7 @@
           >
             <i
               class="fa-solid fa-trash btn btn-outline-danger"
-              (click)="removeItem(cart.id)"
+              (click)="removeItem(cart.product.id)"
             >
             </i>
           </div>
@@ -139,18 +138,7 @@
         <button class="btn w-100 mb-3 apply" (click)="applyVoucher()">Apply</button>
 
         <ul class="list-group">
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            Subtotal
-            <span>{{ getSubtotal() }} EGP</span>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            Discount
-            <span>{{getShippingCost() }}</span>
-          </li>
+          
           <li
             class="list-group-item d-flex justify-content-between align-items-center"
           >
@@ -158,7 +146,7 @@
             <span class="fw-bold">{{ getTotalPrice() }} EGP</span>
           </li>
         </ul>
-        <button class="btn w-100 mt-3 apply">Proceed to Checkout</button>
+        <button class="btn w-100 mt-3 apply"(click)="checkOut()">Proceed to Checkout</button>
       </div>
     </div>
   </div>

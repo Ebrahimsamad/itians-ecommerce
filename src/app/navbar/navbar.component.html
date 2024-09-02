@@ -5,7 +5,6 @@
         src="WhatsApp_Image_2024-08-24_at_12.06.29_PM__1_-removebg-preview.png"
         alt=""
     /></a>
-    <!-- Navbar links -->
     <nav
       class="navbar navbar-expand-lg"
       [ngClass]="{ active: navbarVisible }"
@@ -16,11 +15,9 @@
       <a class="nav-link" routerLink="/product" routerLinkActive="active">
         Products</a
       >
-      <!-- <a routerLink="/categories" routerLinkActive="active-link">Categories</a> -->
       <a routerLink="/about-us" routerLinkActive="active-link">About Us</a>
       <a routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
     </nav>
-    <!-- Header icons -->
     <div class="header-icons">
       <div class="search-container" *ngIf="searchActive">
         <input
@@ -48,12 +45,12 @@
       >
         <i class="fa-solid fa-cart-shopping"></i>
         <span
-          class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white"
-          style="background-color: #d09423"
-        >
-          <!-- {{ totalCartItems }} -->
-          2</span
-        >
+  class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white"
+  style="background-color: #d09423"
+>
+  {{ totalCartItems }}
+</span>
+
       </a>
       <a routerLink="/login" routerLinkActive="active-route"
         ><i class="fas fa-user"></i
