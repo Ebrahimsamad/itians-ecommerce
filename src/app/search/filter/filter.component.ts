@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input, EventEmitter, Output } from '@angular/core';
 import { NgxSliderModule, Options, LabelType } from '@angular-slider/ngx-slider';
 import { NgClass, NgFor } from '@angular/common';
+import { ProductSearchService } from '../../service/product-search.service';
 
 @Component({
   selector: 'app-filter',
@@ -9,37 +10,68 @@ import { NgClass, NgFor } from '@angular/common';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
-export class FilterComponent implements OnInit {
-  categories: string[] = ['Category 1', 'Category 2', 'Category 3'];
-  brands: string[] = ['Brand A', 'Brand B', 'Brand C'];
-  minPrice: number = 0;
-  maxPrice: number = 1000;
+export class FilterComponent  {
+  @Output() filterChanged = new EventEmitter<any>();
+@Input() categories: any[] =[]; 
+  minPrice?: number;  
+  maxPrice?: number;
+  minPriceBarValue: number=0;  
+  maxPriceBarValue: number=30000;
+  selectedCategory?: string;
+  selectedBrand?: string;
+  selectedStock?: boolean;  
+  rating?: number;
+  sale?: boolean;
 
-  selectedCategory: string = '';
-  selectedBrand: string = '';
-  selectedStock: boolean | null = null;
-
-  optionsPrice: Options = {
+  optionsPrice = {
     floor: 0,
-    ceil: 1000,
-    translate: (value: number, label: LabelType): string => {
-      return '' + value;
+    ceil: this.maxPriceBarValue,
+    translate: (value: number): string => {
+      return '$' + value;
     }
   };
 
-  ngOnInit(): void {
-    // Initialize component state
-  }
+  constructor(private productService: ProductSearchService ) { }
 
+ 
+  
   onCategoryChange(category: string): void {
     this.selectedCategory = category;
+    this.emitFilters();
   }
+  onValueChange($event:any){
+    this.minPrice = $event
+    this.emitFilters();
 
-  onBrandChange(brand: string): void {
-    this.selectedBrand = brand;
+
   }
+  onHighValueChange($event:any){
+    this.maxPrice = $event;
+
+  }
+ 
 
   onStockChange(stock: boolean): void {
     this.selectedStock = stock;
+    this.emitFilters();
+  }
+
+  onRatingChange(rating: number): void {
+    this.rating = rating;
+    this.emitFilters();
+  }
+
+  onSaleChange(sale: boolean): void {
+    this.sale = sale;
+    this.emitFilters();
+  }
+
+  private emitFilters(): void {
+    this.filterChanged.emit({
+      category: this.selectedCategory,
+      minPrice: this.minPrice,
+      maxPrice: this.maxPrice,
+      sale: this.sale,
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductSearchService } from '../../service/product-search.service';
 import { CardComponent } from '../../card/card.component';
 import { NgFor,NgIf } from '@angular/common';
@@ -13,20 +13,10 @@ import { LoaderComponent } from "../../loader/loader.component";
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
-  products = [];
+  @Input()  products:any[] = [];
   p: number = 1;
 
-  constructor(private productSearch: ProductSearchService){}
-
-  ngOnInit() {
-    this.loadProducts();
-  }
-
-  loadProducts() {
-    this.productSearch.getProducts().subscribe((data: any) => {
-      this.products = data.products;
-    });
-  }
+  
   onPageChange(page: number) {
     this.p = page;
   }

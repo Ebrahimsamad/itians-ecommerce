@@ -1,8 +1,10 @@
+import { AuthService } from './../services/auth.service';
+import { LocalStorageService } from './../service/local-storage.service';
 import { NgClass, NgIf, NgStyle } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
 import { DiscountPipe } from '../pipe/discount.pipe';
+import { CartListService } from '../service/cart-list.service';
 
 @Component({
   selector: 'app-card',
@@ -16,7 +18,7 @@ export class CardComponent implements OnInit {
   favoriteProducts: any[] = [];
   cartProducts: any[] = [];
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService , private cartListService:CartListService,private localStorageService:LocalStorageService ) {}
 
   ngOnInit(): void {
     this.loadFavoriteProducts();
@@ -63,23 +65,14 @@ export class CardComponent implements OnInit {
     return this.isFavorite() ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
   }
 
-  addToCart(): void {
-    if (
-      !this.cartProducts.some((cartItem) => cartItem._id === this.product._id)
-    ) {
-      this.cartProducts.push(this.product);
+  addToCart(product: any): void {
+    this.authService.isAuthenticated$.subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        this.cartListService.addToCart(product);
+      }else{
+        this.localStorageService.updateQuantityInArray('cart', product._id,1,product)
+      }
+    })
 
-      localStorage.setItem(
-        'user',
-        JSON.stringify({
-          ...JSON.parse(localStorage.getItem('user') || '{}'),
-          cart: this.cartProducts,
-        })
-      );
-
-      console.log('Product added to cart:', this.product);
-    } else {
-      console.log('Product already in cart:', this.product);
-    }
   }
 }

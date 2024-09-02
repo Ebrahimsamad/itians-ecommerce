@@ -41,7 +41,6 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-
   forgotPassword(emailData: { email: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/forgetPassword`, emailData).pipe(
       tap(() => console.log('Sending forgot password request:', emailData)),
@@ -59,10 +58,15 @@ export class AuthService {
     );
   }
 
-  resetPassword(data: { token: string; email: string; newPassword: string; confirmPassword: string }): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.apiUrl}/resetPassword`, data).pipe(
-      catchError(this.handleError)
-    );
+  resetPassword(data: {
+    token: string;
+    email: string;
+    newPassword: string;
+    confirmPassword: string;
+  }): Observable<{ message: string }> {
+    return this.http
+      .post<{ message: string }>(`${this.apiUrl}/resetPassword`, data)
+      .pipe(catchError(this.handleError));
   }
 
   toggleFavourite(productId: string): Observable<{ message: string; favourites: any[] }> {
@@ -85,7 +89,6 @@ export class AuthService {
   getFavoriteProducts(productIds: string[]): Observable<any[]> {
     return this.http.post<any[]>(`${this.apiUrl}/products`, { ids: productIds });
   }
-
 
   private handleAuthentication(token: string, user: object): void {
     localStorage.setItem('token', `Bearer ${token}`);

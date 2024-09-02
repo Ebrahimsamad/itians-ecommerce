@@ -15,8 +15,12 @@
       <a routerLink="/Favourite" routerLinkActive="active-link"><i class="fas fa-heart"></i></a>
       <a class="position-relative">
         <i class="fa-solid fa-cart-shopping"></i>
-        <span class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white" style="background-color: #d09423">2</span>
-      </a>
+        <span
+        class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white"
+        style="background-color: #d09423"
+      >
+        {{ totalCartItems }}
+      </span>      </a>
 
       <a *ngIf="isAuthenticated; else loginLink" routerLink="/login" routerLinkActive="active-route">
         <img [src]="userImage" alt="User Image" class="user-image" />

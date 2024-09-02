@@ -7,31 +7,35 @@
     <div
       *ngFor="let category of categories"
       class="form-check border px-5 py-3 mb-2 w-75"
-      [ngClass]="{'selected': selectedCategory === category}"
+      [ngClass]="{'selected': selectedCategory === category.name}"
       style="border-radius: 16px;"
-      (click)="onCategoryChange(category)"
+      (click)="onCategoryChange(category.name)"
     >
       <input
         class="form-check-input"
         type="radio"
         name="category"
-        [ngClass]="{'radioSelected': selectedCategory === category}"
-        [value]="category"
-        [checked]="selectedCategory === category"
-        (change)="onCategoryChange(category)"
+        [ngClass]="{'radioSelected': selectedCategory === category.name}"
+        [value]="category.name"
+        [checked]="selectedCategory === category.name"
+        (change)="onCategoryChange(category.name)"
       />
       <label class="form-check-label">
-        {{ category }}
+        {{ category.name }}
       </label>
     </div>
   </div>
 
   <!-- Price Range Filter with ngx-slider -->
   <div class="mb-4 p-3 border " style="border-radius: 16px;">
-    <h6>Price Range: {{ minPrice }} - {{ maxPrice }}</h6>
-    <div class="custom-slider ">
-
-      <ngx-slider [(value)]="minPrice" [(highValue)]="maxPrice" [options]="optionsPrice"></ngx-slider>
+    <h6>Price Range: {{ minPriceBarValue }} - {{ maxPriceBarValue }}</h6>
+    <div class="custom-slider">
+      <ngx-slider [(value)]="minPriceBarValue" 
+                  [(highValue)]="maxPriceBarValue" 
+                  [options]="optionsPrice" 
+                  (valueChange)="onValueChange($event)" 
+                  (highValueChange)="onHighValueChange($event)">
+      </ngx-slider>
     </div>
   </div>
 
