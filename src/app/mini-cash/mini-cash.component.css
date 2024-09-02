@@ -50,6 +50,7 @@ body {
   border-radius: 20px;
   padding: 10px 20px;
   margin-right: 20px;
+  text-align: center;
 }
 
 .offers-section .card {
@@ -58,6 +59,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .offers-section .card img {
@@ -77,14 +79,7 @@ body {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   flex-grow: 1;
-}
-
-.offers-section .card-body .badge {
-  background-color: #af00ff;
-  color: white;
-  font-size: 12px;
-  border-radius: 12px;
-  padding: 5px 10px;
+  text-align: center;
 }
 
 .offers-section .price {
@@ -93,40 +88,79 @@ body {
   font-weight: bold;
 }
 
-.offers-section .old-price {
-  color: #888;
-  font-size: 16px;
-  text-decoration: line-through;
-  margin-left: 10px;
-}
-
-.offers-section .installment {
-  color: #6c757d;
-  font-size: 14px;
-}
-.offers-section .card {
-border: none;
-border-radius: 15px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-display: flex;
-flex-direction: column;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
 .offers-section .card:hover {
-transform: scale(1.05);
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 992px) {
+  .offers-section h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .offers-section .btn {
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .offers-section .row-cols-md-5 .col {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+
+  .offers-section .card img {
+    height: 180px;
+  }
+
+  .offers-section .price {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 768px) {
   .offers-section h2 {
-      text-align: center;
-      font-size: 28px;
+    text-align: center;
+    font-size: 24px;
   }
 
   .offers-section .btn {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .offers-section .row-cols-md-5 .col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .offers-section .card img {
+    height: 160px;
+  }
+
+  .offers-section .price {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .offers-section h2 {
+    font-size: 20px;
+  }
+
+  .offers-section .row-cols-md-5 .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .offers-section .card img {
+    height: 140px;
+  }
+
+  .offers-section .price {
+    font-size: 16px;
   }
 }

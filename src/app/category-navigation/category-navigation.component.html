@@ -7,10 +7,10 @@
     <div class="btn-group mb-0 text-capitalize fw-medium">
       <button
         *ngFor="let category of categories"
-        (click)="onCategorySelect(category.id)"
+        (click)="onCategorySelect(category)"
         class="btn category-btn"
       >
-        {{ category.name }}
+        {{ category}}
       </button>
     </div>
   </div>

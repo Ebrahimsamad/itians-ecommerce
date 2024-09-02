@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { DiscountPipe } from '../pipe/discount.pipe';
 import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
+import { CardComponent } from "../card/card.component";
 
 @Component({
   selector: 'app-product-grid',
   standalone: true,
-  imports: [CommonModule,DiscountPipe,DiscountBadgePipe],
+  imports: [CommonModule, DiscountPipe, DiscountBadgePipe, CardComponent],
   templateUrl: './product-grid.component.html',
   styleUrl: './product-grid.component.css'
 })

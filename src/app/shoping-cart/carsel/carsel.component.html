@@ -1,13 +1,14 @@
 <div class="container mt-4">
-  <div class="row">
-    <section class="slide-wrapper col-md-8">
+  <div class="row position-relative">
+    <section class="slide-wrapper col-md-7 ">
       <div id="myCarousel" class="carousel">
 
         <ul class="carousel-indicators">
-          <li *ngFor="let indicator of indicators; let i = index" [ngClass]="{'active': i === currentIndex}" (click)="showSlide(i)"></li>
+          <li *ngFor="let indicator of indicators; let i = index" [ngClass]="{'active': i === currentIndex}"
+            (click)="showSlide(i)"></li>
         </ul>
 
-       
+
         <div class="carousel-inner">
           <div *ngFor="let slide of slides; let i = index" class="item" [ngClass]="{'active': i === currentIndex}">
             <div class="fill" [ngStyle]="{'background-color': slide.bgColor}">
@@ -36,20 +37,22 @@
       </div>
     </section>
 
-    <div class="order-summary col-md-3 mx-4 text-center d-flex flex-column gap-4">
+
+
+
+    <div class="order-summary col-md-5  text-center d-flex flex-column ">
 
       <div class="section offers-section">
         <div class="offer-card exclusive-offer">
-            <div class="offer-content">
-                <span class="offer-label">Exclusive Offer</span>
+          <div class="offer-content">
+            <span class="offer-label">Exclusive Offer</span>
 
-                <h2>Best Online Deals, Free Stuff</h2>
-                <p>Only on this week... Don't miss</p>
-                <button class="btn btn button">Get Best Deal</button>
-            </div>
+            <h2>Best Online Deals, Free Stuff</h2>
+            <p>Only on this week... Don't miss</p>
+            <button class="btn btn button">Get Best Deal</button>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>

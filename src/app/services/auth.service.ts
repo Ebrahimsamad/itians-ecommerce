@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private apiUrl = 'https://e-commerce-api-fawn.vercel.app';
-
   private isAuthenticated = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticated.asObservable();
   
@@ -26,11 +25,7 @@ export class AuthService {
     );
   }
 
-  register(userData: {
-    email: string;
-    password: string;
-    name: string;
-  }): Observable<any> {
+  register(userData: { email: string; password: string; name: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/signup`, userData).pipe(
       tap((response) => {
         this.handleAuthentication(response.token, response.user);
@@ -94,9 +89,7 @@ export class AuthService {
   }
 
   getFavoriteProducts(productIds: string[]): Observable<any[]> {
-    return this.http.post<any[]>(`${this.apiUrl}/products`, {
-      ids: productIds,
-    });
+    return this.http.post<any[]>(`${this.apiUrl}/products`, { ids: productIds });
   }
 
 

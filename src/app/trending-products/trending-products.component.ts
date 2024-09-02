@@ -1,39 +1,41 @@
-import { Component } from '@angular/core';
-import { ProductService } from '../../service/product.service';
+import { Component, OnInit } from '@angular/core';
 import { CategoryNavigationComponent } from '../category-navigation/category-navigation.component';
 import { ProductGridComponent } from '../product-grid/product-grid.component';
+import { HomeProductService } from '../service/home-product.service';
 
 @Component({
   selector: 'app-trending-products',
   standalone: true,
   imports: [CategoryNavigationComponent, ProductGridComponent],
-  templateUrl: './trending-products.component.html',
+templateUrl: './trending-products.component.html',
   styleUrls: ['./trending-products.component.css']
 })
-export class TrendingProductsComponent {
-  products: any[] = [];
+export class TrendingProductsComponent implements OnInit {
+  productsByCategory: any;
+  productsWithHighDiscount: any;
+  allKElements: any[] = [];
+  products:any=[]
 
-  constructor(private productService: ProductService) {}
+  constructor(private homeService: HomeProductService) {}
 
   ngOnInit() {
+    this.homeService.getProducts().subscribe((data) => {
+      this.productsByCategory = data.productsByCategory;
+      this.productsWithHighDiscount = data.productsWithHighDiscount;
+      this.products=this.productsWithHighDiscount;
+      this.allKElements = this.productsByCategory
+      .map((item:any) => Object.keys(item)[0])
+      console.log(this.allKElements)
 
-    this.fetchProducts('beauty');
-  }
-
-  fetchProducts(categoryId: string) {
-    this.productService.getProductsByCategory(categoryId).subscribe((data: any) => {
-      console.log('Received data:', data);
-      if (Array.isArray(data)) {
-        this.products = data.slice(0, 6);
-      } else if (data && Array.isArray(data.products)) {
-        this.products = data.products.slice(0, 6);
-      } else {
-        console.error('Unexpected data format:', data);
-      }
     });
   }
 
-  onCategorySelected(categoryId: string) {
-    this.fetchProducts(categoryId);
+  onCategorySelected(category: string) {
+    const categoryData = this.productsByCategory.find((item: any) => Object.keys(item)[0] === category);
+    if (categoryData) {
+      this.products = categoryData[category];
+    }
+    console.log(this.products);
   }
+
 }

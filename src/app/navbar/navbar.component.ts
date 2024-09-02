@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent) {
     const searchContainer = document.querySelector('.search-container');
@@ -63,6 +64,7 @@ export class NavbarComponent implements OnInit {
 
   performSearch() {
     if (this.searchTerm.trim()) {
+      console.log('Navigating to search with term:', this.searchTerm);
       this.router.navigate(['/search'], {
         queryParams: { q: this.searchTerm },
       });

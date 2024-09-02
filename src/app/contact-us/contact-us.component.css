@@ -1,5 +1,4 @@
 body {
-
   font-family: 'Roboto', sans-serif;
 }
 .contact-container, .second-container {
@@ -68,5 +67,10 @@ margin-left: 10px;
 
 
 }
-
-
+.second-container {
+  background-color: #d09423;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+}

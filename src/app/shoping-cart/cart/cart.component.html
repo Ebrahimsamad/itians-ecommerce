@@ -1,6 +1,9 @@
 <div class="container-fluid m-5">
   <div class="row">
     <div class="col-lg-8">
+      <div>
+
+      </div>
       <table class="cart-table">
         <thead>
           <tr>
@@ -24,20 +27,14 @@
               alt="Product Image"
             />
           </div>
-          <div class="col-12 col-md-4 d-flex align-items-center text-center">
+          <div class="col-12 col-md-3 d-flex align-items-center text-center">
             <div class="card-body">
               <h5 class="card-title">{{ cart.productBody.title }}</h5>
             </div>
           </div>
-          <div
-            class="col-12 col-md-3 d-flex align-items-center justify-content-center"
-          >
+          <div class="col-12 col-md-3 d-flex align-items-center justify-content-center">
             <div class="ddd quantity-control d-flex align-items-center">
-              <button
-                class="btn"
-                type="button"
-                id="button"
-                style="
+              <button class="btn" type="button" id="button" style="
                   width: 30px;
                   height: 30px;
                   line-height: 30px;
@@ -71,8 +68,7 @@
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                "
-              >
+                ">
                 -
               </button>
             </div>
@@ -96,12 +92,8 @@
         </div>
       </div>
       } @empty {
-      <img
-        src="/empty-cart-2130356-1800917.webp"
-        class="img-fluid mx-auto d-block"
-        alt="Empty Cart"
-        style="max-width: 100%; height: auto"
-      />
+      <img src="/empty-cart-2130356-1800917.webp" class="img-fluid mx-auto d-block" alt="Empty Cart"
+        style="max-width: 100%; height: auto" />
       }
 
 
@@ -111,15 +103,12 @@
       <table class="cart-table">
         <thead>
           <tr class="text-center align-items-center">
-            <th
-              colspan="2"
-              style="
+            <th colspan="2" style="
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 font-weight: bolder;
                 text-align: center;
-              "
-            >
+              ">
               Order Summary
             </th>
           </tr>
@@ -128,13 +117,7 @@
 
       <div class="card p-3">
         <h5>Have a voucher?</h5>
-        <input
-          type="text"
-          class="form-control mb-3"
-          placeholder="Enter voucher code"
-          [(ngModel)]="voucherCode"
-
-        />
+        <input type="text" class="form-control mb-3" placeholder="Enter voucher code" [(ngModel)]="voucherCode" />
         <button class="btn w-100 mb-3 apply" (click)="applyVoucher()">Apply</button>
 
         <ul class="list-group">
@@ -169,13 +152,11 @@
     </div>
   </div>
 
-  <div>
-    <app-carsel></app-carsel>
-
-  </div>
 
 
 
 </div>
+<div>
+  <app-carsel></app-carsel>
 
-
+</div>
