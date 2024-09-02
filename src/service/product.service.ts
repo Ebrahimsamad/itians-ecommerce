@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://e-commerce-api-fawn.vercel.app/product'; // رابط API الأساسي
+  private apiUrl = 'https://e-commerce-api-fawn.vercel.app/product';
   constructor(private http: HttpClient) { }
 
   getProductById(id: string): Observable<any> {

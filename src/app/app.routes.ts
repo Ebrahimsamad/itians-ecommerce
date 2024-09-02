@@ -12,6 +12,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 // import { ContactUSComponent } from './contact-us/contact-us.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { ContactUSComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,10 +43,10 @@ const routes: Routes = [
     component: AboutUsComponent,
   },
 
-  // {
-  //   path:"contact-us",
-  //   component:ContactUSComponent
-  // },
+  {
+    path:"contact-us",
+    component:ContactUSComponent
+  },
 
   {
     path:"UserProfile",
@@ -54,6 +56,14 @@ const routes: Routes = [
     path:"Favourite",
     component:FavoritesComponent
   },
+  {
+    path:"Favourite",
+    component:FavoritesComponent
+  },
+  {
+    path:"details/:id",
+    component:ProductdetailsComponent
+  }
   // {
   //   path:"cart",
   //   component:CartComponent

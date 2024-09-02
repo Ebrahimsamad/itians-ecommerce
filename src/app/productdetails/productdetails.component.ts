@@ -5,7 +5,6 @@ import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../service/product.service';
 import { CartService } from '../../service/cart.service';
-import { Product,Review } from '../../model/Product';
 import { error } from 'jquery';
 import { Input } from 'hammerjs';
 import { ReviewFormComponent } from '../review-form/review-form.component';
@@ -25,7 +24,7 @@ export class ProductdetailsComponent implements OnInit {
   reviewsStart: number = 1;
   reviewsEnd: number = 0;
   showQuantityControls = false;
-  favorites: Product[] = [];
+  favorites: any[] = [];
   newReviewContent: string = '';
 
   constructor(
@@ -53,12 +52,12 @@ export class ProductdetailsComponent implements OnInit {
     }
   }
 
-  handleReviewSubmission(newReview: Review) {
+  handleReviewSubmission(newReview: any) {
     if (newReview && this.newReviewContent.trim() && newReview.rating) {
       this.product.reviews.push(newReview);
 
       this.productService.addReview(newReview).subscribe({
-        next: (review: Review) => {
+        next: (review: any) => {
           console.log('Review submitted successfully:', review);
           this.product.reviews[this.product.reviews.length - 1] = review;
           this.showMessage("Your review has been submitted successfully!");
@@ -185,7 +184,7 @@ addToCart(): void {
   // }
 
 
-  onSelectProduct(product: Product): void {
+  onSelectProduct(product: any): void {
     this.product = product;
     this.selectedImage = product.images[0];
     this.quantity = 1;

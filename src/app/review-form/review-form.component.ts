@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReviewService } from '../../service/review.service';
-import { Review } from '../../model/Product';
 
 @Component({
   selector: 'app-review-form',
@@ -12,13 +11,13 @@ import { Review } from '../../model/Product';
   styleUrls: ['./review-form.component.css']
 })
 export class ReviewFormComponent {
-  @Output() reviewSubmitted = new EventEmitter<Review>();
-  @Input() productId: string = ''; 
+  @Output() reviewSubmitted = new EventEmitter<any>();
+  @Input() productId: string = '';
   newReviewContent: string = '';
-  stars: number[] = [1, 2, 3, 4, 5]; 
+  stars: number[] = [1, 2, 3, 4, 5];
   rating: number = 0;
-  feedbackSubmitted = false; 
-  notificationMessage: string = ''; 
+  feedbackSubmitted = false;
+  notificationMessage: string = '';
 
   constructor(private reviewService: ReviewService) { }
 
@@ -32,11 +31,11 @@ export class ReviewFormComponent {
         rating: this.rating
       };
       console.log('Submitting review:', newReview);
-  
+
       this.reviewService.addReview(this.productId, newReview).subscribe({
         next: review => {
           console.log('Review submitted successfully:', review);
-          this.reviewSubmitted.emit(review); 
+          this.reviewSubmitted.emit(review);
           this.newReviewContent = '';
           this.rating = 0;
           this.feedbackSubmitted = true;
@@ -55,7 +54,7 @@ export class ReviewFormComponent {
       this.showMessage(this.notificationMessage);
     }
   }
-  
+
   showMessage(message: string): void {
     const snackbar = document.getElementById("snackbar");
     if (snackbar) {
