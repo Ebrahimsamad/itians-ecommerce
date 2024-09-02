@@ -6,26 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  private Api = 'https://dummyjson.com/products';
-  private cartItems: any[] = [];
+  private apiUrl = 'https://e-commerce-api-fawn.vercel.app/product'; // رابط API الأساسي
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<any> {
-    return this.http.get<any>(this.Api);
+  getProductById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+  addReview(review: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/addReview`, review);
   }
 
-  getProductById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.Api}/${id}`);
-  }
-  addToCart(item: any) {
-    this.cartItems.push(item);
-  }
-
-  getCartItems(): any[] {
-    return this.cartItems;
-  }
-
-  getProductsByCategory(categoryId: string): Observable<any> {
-  return this.http.get<any>(`https://dummyjson.com/products/category/${categoryId}`);
-}
 }
