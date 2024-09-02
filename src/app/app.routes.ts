@@ -10,7 +10,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUSComponent } from './contact-us/contact-us.component';
+// import { ContactUSComponent } from './contact-us/contact-us.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
@@ -41,15 +41,24 @@ const routes: Routes = [
     component: AboutUsComponent,
   },
 
-  {
-    path:"contact-us",
-    component:ContactUSComponent
-  },
+  // {
+  //   path:"contact-us",
+  //   component:ContactUSComponent
+  // },
 
   {
     path:"UserProfile",
     component:UserProfileComponent
-  }
+  },
+  {
+    path:"Favourite",
+    component:FavoritesComponent
+  },
+  // {
+  //   path:"cart",
+  //   component:CartComponent
+  // }
+
 
 
 

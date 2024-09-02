@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private apiUrl = 'https://e-commerce-api-fawn.vercel.app';
-
   private isAuthenticated = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticated.asObservable();
 
@@ -26,11 +25,7 @@ export class AuthService {
     );
   }
 
-  register(userData: {
-    email: string;
-    password: string;
-    name: string;
-  }): Observable<any> {
+  register(userData: { email: string; password: string; name: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/signup`, userData).pipe(
       tap((response) => {
         this.handleAuthentication(response.token, response.user);
@@ -64,22 +59,15 @@ export class AuthService {
     );
   }
 
-  resetPassword(data: {
-    token: string;
-    email: string;
-    newPassword: string;
-    confirmPassword: string;
-  }): Observable<{ message: string }> {
-    return this.http
-      .post<{ message: string }>(`${this.apiUrl}/resetPassword`, data)
-      .pipe(catchError(this.handleError));
+  resetPassword(data: { token: string; email: string; newPassword: string; confirmPassword: string }): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(`${this.apiUrl}/resetPassword`, data).pipe(
+      catchError(this.handleError)
+    );
   }
   // * End of Forget and Reset Password * //
 
   // ! Start Handle Favourite cart
-  toggleFavourite(
-    productId: string
-  ): Observable<{ message: string; favourites: any[] }> {
+  toggleFavourite(productId: string): Observable<{ message: string; favourites: any[] }> {
     const token = localStorage.getItem('token');
 
     if (!token) {
@@ -97,11 +85,8 @@ export class AuthService {
   }
 
   getFavoriteProducts(productIds: string[]): Observable<any[]> {
-    return this.http.post<any[]>(`${this.apiUrl}/products`, {
-      ids: productIds,
-    });
+    return this.http.post<any[]>(`${this.apiUrl}/products`, { ids: productIds });
   }
-
   // ! End Handle Favourite cart
 
   private handleAuthentication(token: string, user: object): void {

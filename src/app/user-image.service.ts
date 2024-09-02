@@ -22,6 +22,6 @@ export class UserImageService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     user.image = imageSrc;
     localStorage.setItem('user', JSON.stringify(user));
-    this.userImageSubject.next(imageSrc); 
+    this.userImageSubject.next(imageSrc);
   }
 }

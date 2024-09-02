@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
 import { PasswordService } from '../password.service';
 import { UserImageService } from '../user-image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,13 +16,13 @@ export class UserProfileComponent implements OnInit {
   userProfileForm: FormGroup;
   originalAvatarSrc = 'assets/default-avatar.jpg';
   imageSrc = this.originalAvatarSrc;
-  editMode:boolean=false;
+  editMode: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private passwordService: PasswordService,
-    private userImageService : UserImageService
-
+    private userImageService: UserImageService
   ) {
     this.userProfileForm = this.fb.group({
       name: [''],
@@ -56,42 +57,36 @@ export class UserProfileComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
-
-
   }
 
   enablePasswordFields(): void {
-    this.editMode=true
+    this.editMode = true;
     this.userProfileForm.get('currentPassword')?.enable();
     this.userProfileForm.get('newPassword')?.enable();
     this.userProfileForm.get('confirmPassword')?.enable();
     this.userProfileForm.get('name')?.disable();
     this.userProfileForm.get('image')?.disable();
-
-
   }
 
   cancelChanges(): void {
-    this.editMode=false
+    this.editMode = false;
     this.loadUserData();
     this.userProfileForm.get('currentPassword')?.disable();
     this.userProfileForm.get('newPassword')?.disable();
     this.userProfileForm.get('confirmPassword')?.disable();
     this.userProfileForm.get('name')?.enable();
     this.userProfileForm.get('image')?.enable();
-    this.loadUserData();
-
   }
 
   saveChanges(): void {
-    if(this.editMode){
+    if (this.editMode) {
       this.updatePassword();
-    }else{
+    } else {
       this.updateNameAndImage();
     }
-
   }
-  updateNameAndImage():void{
+
+  updateNameAndImage(): void {
     const formData = new FormData();
     const formValues = this.userProfileForm.value;
 
@@ -105,13 +100,10 @@ export class UserProfileComponent implements OnInit {
     this.userService.updateUserData(formData).subscribe({
       next: (response) => {
         localStorage.setItem("user", JSON.stringify(response.user));
-        console.log('Changes saved to backend:', response);
+        this.showMessage('Profile updated successfully!');
       },
       error: (err) => {
-        if (err.status === 400) {
-          alert("Failed to save data");
-        }
-        console.error('Error saving changes to backend:', err);
+        this.showMessage('Failed to save data', true);
       }
     });
   }
@@ -121,22 +113,29 @@ export class UserProfileComponent implements OnInit {
 
     this.passwordService.changePassword(currentPassword, newPassword, confirmPassword).subscribe({
       next: (response) => {
-        console.log('Password changed successfully:', response);
+        this.showMessage('Password changed successfully!');
       },
       error: (err) => {
         if (err.status === 500) {
-          alert("Server error, please try again");
+          this.showMessage("Server error, please try again", true);
+        } else if (err.status === 401) {
+          this.showMessage("Incorrect current password", true);
+        } else if (err.status === 400) {
+          this.showMessage("Invalid data provided", true);
+        } else {
+          this.showMessage('Error changing password', true);
         }
-        if (err.status === 401) {
-          alert("Incorrect current password");
-        }
-        if (err.status === 400) {
-          alert("Invalid data provided");
-        }
-        console.error('Error changing password:', err);
       }
     });
   }
 
-
+  showMessage(message: string, isError: boolean = false): void {
+    Swal.fire({
+      title: isError ? 'Error' : 'Success',
+      text: message,
+      icon: isError ? 'error' : 'success',
+      confirmButtonText: 'OK',
+      confirmButtonColor: isError ? '#d9534f' : 'red'
+    });
+  }
 }

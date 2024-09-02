@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output,Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-category-navigation',
@@ -11,7 +11,9 @@ import { Component, EventEmitter, Output,Input } from '@angular/core';
 export class CategoryNavigationComponent {
   @Input() categories: any[] = [];
 
-
+OnInit(){
+  console.log(this.categories)
+}
 
   @Output() categorySelected = new EventEmitter<string>();
 
