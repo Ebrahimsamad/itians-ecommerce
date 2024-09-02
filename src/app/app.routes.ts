@@ -7,12 +7,14 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
-import { HomepageComponent } from './homepage/homepage.component';
 import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUSComponent } from './contact-us/contact-us.component';
+import { CartComponent } from './shoping-cart/cart/cart.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
@@ -32,10 +34,11 @@ const routes: Routes = [
     path:"product",
     component:SearchComponent
   },
-  {
-    path:"favourite",
-    component:FavoritesComponent
-  },
+  { path: 'product/:id', component: ProductdetailsComponent },
+  // {
+  //   path:"favourite",
+  //   component:FavoritesComponent
+  // },
   {
     path:"about-us",
     component:AboutUsComponent
@@ -44,6 +47,10 @@ const routes: Routes = [
   {
     path:"contact-us",
     component:ContactUSComponent
+  },
+  {path:"cart",
+    component:CartComponent
+
   }
 
 

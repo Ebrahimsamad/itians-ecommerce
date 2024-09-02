@@ -7,10 +7,11 @@ body {
 
 .offers-section {
   background-color: #2d5356;
-  padding: 20px 0;
+  padding: 2vw 0; /* استخدام النسبة المئوية للعرض */
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 1vw; /* تحديد الحواف بالنسب */
+  max-width: 100%;
 }
 
 .offers-section .background-circles {
@@ -34,6 +35,9 @@ body {
 .offers-section .container {
   position: relative;
   z-index: 1;
+  max-width: 80vw; /* العرض يتناسب مع 80% من عرض الشاشة */
+  margin: 0 auto;
+  padding: 0 2vw; /* حواف داخلية بنسبة 2% من عرض الشاشة */
 }
 
 .offers-section h2 {
@@ -63,9 +67,9 @@ body {
 .offers-section .card img {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  max-height: 200px;
-  height: 200px;
-  object-fit: cover;
+  max-height: auto;
+  height: auto;
+  object-fit: contain;
   background-color: #f8f9fa;
   padding: 20px;
 }
@@ -117,16 +121,46 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
 transform: scale(1.05);
 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 800px) {
+  .offers-section .container {
+    max-width: 70vw; /* عرض أصغر بنسبة 70% */
+    padding: 0 1.5vw; /* حواف أقل */
+  }
+}
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .offers-section .container {
+    max-width: 60vw; /* عرض أصغر بنسبة 60% */
+    padding: 0 1vw; /* حواف أقل */
+  }
+}
+
+@media (max-width: 400px) {
+  .offers-section .container {
+    max-width: 50vw; /* عرض أصغر بنسبة 50% */
+    padding: 0 0.5vw; /* حواف أقل */
+  }
+}
+
+@media (max-width: 250px) {
   .offers-section h2 {
-      text-align: center;
-      font-size: 28px;
+    text-align: center;
+    font-size: 4vw; /* حجم الخط بنسبة 4% من عرض الشاشة */
   }
 
   .offers-section .btn {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1vw 2vw; /* حجم الزر بنسبة */
+    font-size: 3vw; /* حجم الخط بالنسبة */
+  }
+
+  .offers-section .card {
+    margin-bottom: 1vw; /* المسافة بين البطاقات بنسبة */
+  }
+
+  .offers-section .card img {
+    padding: 1vw; /* حواف الصورة بنسبة */
   }
 }

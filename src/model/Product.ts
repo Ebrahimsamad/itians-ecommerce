@@ -27,3 +27,10 @@ export interface Product {
     images: string[]; // Array of image URLs
     thumbnail: string; // URL of the thumbnail image
 }
+export interface Review {
+    reviewerName: string;
+    date: string; 
+    rating: number; 
+    comment: string;
+    
+  }

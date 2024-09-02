@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CounterService } from '../counter.service';
+// import { CounterService } from '../counter.service';
 import { NgFor } from '@angular/common';
 import { FormsModule} from '@angular/forms';
-import { LoginComponent } from '../login/login.component';
+// import { LoginComponent } from '../login/login.component';
 import { CarselComponent } from '../carsel/carsel.component';
-import { CarsouelComponent } from '../carsouel/carsouel.component';
-import { HeaderSearchComponent } from '../header-search/header-search.component';
+// import { CarsouelComponent } from '../carsouel/carsouel.component';
+// import { HeaderSearchComponent } from '../header-search/header-search.component';
+import { CartService } from '../../../service/cart.service';
 
 
 
@@ -13,7 +14,8 @@ import { HeaderSearchComponent } from '../header-search/header-search.component'
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports:[NgFor,FormsModule,CarselComponent,CarsouelComponent,HeaderSearchComponent],
+  imports:[NgFor,FormsModule,CarselComponent],
+    // ,CarsouelComponent,HeaderSearchComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 
@@ -29,35 +31,34 @@ export class CartComponent implements OnInit {
   discountRate: number = 0.50;
   shippingRate: number = 0.10;
   shippingCost: number = 0;
-  constructor(private CounterService: CounterService) {}
+   constructor(private cartService: CartService) {}
 
 
-  ngOnInit() {
-    this.CounterService.getCartArray().subscribe((data) => {
-      this.carts = data;
-      console.log('Cart data:', this.carts);
+   ngOnInit(): void {
+    this.cartService.cartItems$.subscribe(items => {
+      this.cartItems = items;
     });
   }
 
-  increaseQuantity(id: any) {
-    const cartItem = this.carts.find((c) => c.id === id);
-    if (cartItem && cartItem.quantity < cartItem.stock) {
-      cartItem.quantity += 1;
-      this.CounterService.setCartArray(this.carts);
+  increaseQuantity(id: string): void {
+    const item = this.cartItems.find(c => c._id === id);
+    if (item && item.stock > 0) {
+      item.stock += 1;
+      this.cartService.addProduct(item, 1); 
     }
   }
 
-  decreaseQuantity(id: any) {
-    const cartItem = this.carts.find((c) => c.id === id);
-    if (cartItem && cartItem.quantity > 0) {
-      cartItem.quantity -= 1;
-      this.CounterService.setCartArray(this.carts);
+  decreaseQuantity(id: string): void {
+    const item = this.cartItems.find(c => c._id === id);
+    if (item && item.stock > 1) {
+      item.stock -= 1;
+      this.cartService.addProduct(item, 0); 
     }
   }
 
   removeItem(id: any) {
     this.carts = this.carts.filter((c) => c.id !== id);
-    this.CounterService.setCartArray(this.carts);
+    // this.CounterService.setCartArray(this.carts);
   }
   getSubtotal() {
     return Math.round(

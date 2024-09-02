@@ -37,9 +37,13 @@ export class OurTeamComponent implements AfterViewInit {
             576: {
               items: 1
             },
-            768: {
-              items: 3
+            750: {
+              items:2
+            },
+            1000: {
+              items:3
             }
+
           }
     });
   }

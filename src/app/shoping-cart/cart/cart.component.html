@@ -1,6 +1,9 @@
-<div class="container-fluid">
+<div class="container mt-5">
   <div class="row">
     <div class="col-lg-8">
+      <div>
+        
+      </div>
       <table class="cart-table">
         <thead>
           <tr>
@@ -18,27 +21,17 @@
       <div class="card mb-3">
         <div class="row g-0 align-items-center">
           <div class="col-12 col-md-2 d-flex justify-content-center">
-            <img
-              [src]="cart.thumbnail"
-              class="img-fluid rounded-start"
-              alt="Product Image"
-            />
+            <img [src]="cart.thumbnail" class="img-fluid rounded-start" alt="Product Image" />
           </div>
-          <div class="col-12 col-md-4 d-flex align-items-center text-center">
+          <div class="col-12 col-md-3 d-flex align-items-center text-center">
             <div class="card-body">
               <h5 class="card-title">{{ cart.title }}</h5>
               <p class="card-text">{{ cart.category }}</p>
             </div>
           </div>
-          <div
-            class="col-12 col-md-3 d-flex align-items-center justify-content-center"
-          >
+          <div class="col-12 col-md-3 d-flex align-items-center justify-content-center">
             <div class="ddd quantity-control d-flex align-items-center">
-              <button
-                class="btn"
-                type="button"
-                id="button"
-                style="
+              <button class="btn" type="button" id="button" style="
                   width: 30px;
                   height: 30px;
                   line-height: 30px;
@@ -46,25 +39,12 @@
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                "
-                (click)="increaseQuantity(cart.id)"
-              >
+                " (click)="increaseQuantity(cart.id)">
                 +
               </button>
-              <input
-                type="text"
-                class="form-control text-center border-0 rounded-0"
-                [(ngModel)]="cart.quantity"
-                readonly
-                id="display"
-                style="width: 50px; font-size: 20px; padding: 0; margin: 0 2px"
-              />
-              <button
-                class="btn"
-                (click)="decreaseQuantity(cart.id)"
-                type="button"
-                id="button"
-                style="
+              <input type="text" class="form-control text-center border-0 rounded-0" [(ngModel)]="cart.quantity"
+                readonly id="display" style="width: 50px; font-size: 20px; padding: 0; margin: 0 2px" />
+              <button class="btn" (click)="decreaseQuantity(cart.id)" type="button" id="button" style="
                   width: 30px;
                   height: 30px;
                   line-height: 30px;
@@ -72,37 +52,25 @@
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                "
-              >
+                ">
                 -
               </button>
             </div>
           </div>
 
-          <div
-            class="col-12 col-md-2 d-flex align-items-center justify-content-center"
-          >
+          <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
             <span class="fw-bold price">{{ cart.price }} EGP</span>
           </div>
 
-          <div
-            class="col-12 col-md-1 d-flex align-items-center justify-content-center"
-          >
-            <i
-              class="fa-solid fa-trash btn btn-outline-danger"
-              (click)="removeItem(cart.id)"
-            >
+          <div class="col-12 col-md-1 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-trash btn btn-outline-danger" (click)="removeItem(cart.id)">
             </i>
           </div>
         </div>
       </div>
       } @empty {
-      <img
-        src="/empty-cart-2130356-1800917.webp"
-        class="img-fluid mx-auto d-block"
-        alt="Empty Cart"
-        style="max-width: 100%; height: auto"
-      />
+      <img src="/empty-cart-2130356-1800917.webp" class="img-fluid mx-auto d-block" alt="Empty Cart"
+        style="max-width: 100%; height: auto" />
       }
 
 
@@ -112,15 +80,12 @@
       <table class="cart-table">
         <thead>
           <tr class="text-center align-items-center">
-            <th
-              colspan="2"
-              style="
+            <th colspan="2" style="
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 font-weight: bolder;
                 text-align: center;
-              "
-            >
+              ">
               Order Summary
             </th>
           </tr>
@@ -129,31 +94,19 @@
 
       <div class="card p-3">
         <h5>Have a voucher?</h5>
-        <input
-          type="text"
-          class="form-control mb-3"
-          placeholder="Enter voucher code"
-          [(ngModel)]="voucherCode"
-
-        />
+        <input type="text" class="form-control mb-3" placeholder="Enter voucher code" [(ngModel)]="voucherCode" />
         <button class="btn w-100 mb-3 apply" (click)="applyVoucher()">Apply</button>
 
         <ul class="list-group">
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
+          <li class="list-group-item d-flex justify-content-between align-items-center">
             Subtotal
             <span>{{ getSubtotal() }} EGP</span>
           </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
+          <li class="list-group-item d-flex justify-content-between align-items-center">
             Discount
             <span>{{getShippingCost() }}</span>
           </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
+          <li class="list-group-item d-flex justify-content-between align-items-center">
             Total
             <span class="fw-bold">{{ getTotalPrice() }} EGP</span>
           </li>
@@ -180,14 +133,12 @@
       <p>Hassle Free Returns</p>
     </div>
   </div>
-
-  <div>
-    <app-carsel></app-carsel>
-
-  </div>
-
-
+  
+  
+  
+  
+</div>
+<div>
+  <app-carsel></app-carsel>
 
 </div>
-
-

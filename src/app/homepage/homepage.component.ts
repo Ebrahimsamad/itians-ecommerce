@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CatogerysliderComponent } from "../catogeryslider/catogeryslider.component";
 import { DesignimageComponent } from "../designimage/designimage.component";
 import { FeaturesComponent } from "../features/features.component";
-import { TrendingProductsComponent } from '../trending-products/trending-products.component';
+// import { TrendingProductsComponent } from '../trending-products/trending-products.component';
 import { EmailComponent } from '../email/email.component';
 import { QuestionsComponent } from "../questions/questions.component";
 import { SliderImageComponent } from '../slider-image/slider-image.component';
@@ -21,7 +21,7 @@ import { IconsComponent } from "../icons/icons.component";
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CatogerysliderComponent, DesignimageComponent, FeaturesComponent, TrendingProductsComponent,
+  imports: [CatogerysliderComponent, DesignimageComponent, FeaturesComponent,
     EmailComponent, QuestionsComponent, SliderImageComponent, ImageDesginComponent, CarsouelComponent, MiniCashComponent, HeroComponent, WhatcustomersayComponent, IconsComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'

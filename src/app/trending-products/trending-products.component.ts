@@ -21,7 +21,7 @@ export class TrendingProductsComponent {
   }
 
   fetchProducts(categoryId: string) {
-    this.productService.getProductsByCategory(categoryId).subscribe((data: any) => {
+     this.productService.getProductsByCategory(categoryId).subscribe((data: any) => {
       console.log('Received data:', data);
       if (Array.isArray(data)) {
         this.products = data.slice(0, 6);

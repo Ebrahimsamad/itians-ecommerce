@@ -1,39 +1,51 @@
 .footer {
   background-color: white !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .footer h4 {
   color: #535353;
   font-weight: bold;
   font-size: x-large;
-
-
+  margin-bottom: 15px; /* زيادة المسافة بين العنوان والمحتوى */
 }
+
 .footer li {
   font-family: Arial, sans-serif;
-
+  margin-bottom: 10px; /* إضافة مسافة بين كل عنصر */
 }
+
 .footer a {
-  color: #b0b0b0;
+  color: #7b7a7a;
   text-decoration: none;
 }
-.list-unstyled{
-  font-size:x-large;
 
+.footer-content .list-unstyled {
+  font-size: large;
 }
+
 .footer-content .list-unstyled li a {
   color: #7f8080; 
   text-decoration: none; 
-  
- 
 }
+
 .footer a:hover {
-  color: #ffffff;
+  color: #d09423; 
   text-decoration: underline; 
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer h4 {
+    font-size: large;
+  }
 
-
-
-
-
+  .footer-content .list-unstyled {
+    font-size: medium;
+  }
+  
+  .footer-content {
+    padding: 15px; 
+  }
+}

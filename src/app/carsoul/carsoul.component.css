@@ -1,7 +1,6 @@
 #myCarousel .carousel-item .mask {
   position: absolute;
-  top: 0;
-  left: 0;
+ 
   height: 100%;
   width: 100%;
   background-attachment: fixed;
@@ -49,8 +48,7 @@
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
   display: block;
-  height: auto;
-  max-width: 100%;
+  
 }
 #myCarousel h4, #myCarousel p, #myCarousel a, #myCarousel .carousel-item .mask img {
   -webkit-animation-duration: 1s;
@@ -61,6 +59,7 @@
 #myCarousel  {
   max-width: 1730px;
 }
+
 #myCarousel .carousel-item {
   height: 100%;
   min-height: 550px;
@@ -72,9 +71,10 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-
-
+  max-width: 100%; 
+  margin: 0 auto; 
 }
+
 
 .carousel-item {
   position: relative;
@@ -101,8 +101,33 @@
   transform: translateY(-50%);
   background-color: #f47735;
 }
+#myCarousel .carousel-item img {
+  max-width: 100%;
+ 
+  object-fit: cover;
+}
 
 
+
+@media (max-width: 768px) {
+  #myCarousel .carousel-item img {
+    height: 200px;
+    object-fit: contain;
+  }
+  #myCarousel h4 {
+    font-size: 1.5rem;
+  }
+
+  #myCarousel p {
+    font-size: 0.9rem;
+  }
+
+  .carousel-control-next, .carousel-control-prev {
+    height: 25px;
+    width: 25px;
+    padding: 5px;
+  }
+}
 .carousel-fade .carousel-item {
   opacity: 0;
   -webkit-transition-duration: .6s;
