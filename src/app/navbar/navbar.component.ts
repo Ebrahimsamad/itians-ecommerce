@@ -1,11 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { UserImageService } from '../user-image.service';
 import { AuthService } from '../services/auth.service';
-
 
 @Component({
   selector: 'app-navbar',
@@ -14,11 +13,12 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   userImage: string = '';
   searchActive = false;
   navbarVisible = false;
   searchTerm: string = '';
+  isAuthenticated: boolean = false;
 
   constructor(private router: Router, private userImageService: UserImageService, private authService: AuthService) {}
 
@@ -27,7 +27,10 @@ export class NavbarComponent {
       this.userImage = imageSrc;
     });
 
-   
+    this.authService.isAuthenticated$.subscribe((status) => {
+      this.isAuthenticated = status;
+    });
+
     this.router.events.subscribe(() => {
       this.searchActive = false;
     });

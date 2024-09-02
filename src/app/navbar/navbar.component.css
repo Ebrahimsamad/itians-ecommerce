@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #2d5356; /* Fixed missing semicolon */
+  background-color: #2d5356;
 }
 
 .logo {
@@ -143,4 +143,3 @@
 .user-image:hover {
   border-color: #d09423;
 }
-

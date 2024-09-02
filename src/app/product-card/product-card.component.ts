@@ -48,43 +48,9 @@ export class ProductCardComponent {
   onSelectProduct(): void {
     this.router.navigate(['/product', this.product.id]);
   }
-  handleAddToCart(product: any) {
-    this.productService.addToCart(product);
-    this.router.navigate(['/cart']);
-  }
+  // handleAddToCart(product: any) {
+  //   this.productService.addToCart(product);
+  //   this.router.navigate(['/cart']);
+  // }
 }
 
-// import { Component, Input } from '@angular/core';
-// import { Product } from '../product.model';
-// import { Router } from '@angular/router';
-// import { CommonModule } from '@angular/common';
-
-// @Component({
-//   selector: 'app-product-card',
-//   standalone: true,
-//   imports: [CommonModule,],
-//   templateUrl: './product-card.component.html',
-//   styleUrls: ['./product-card.component.css']
-// })
-// export class ProductCardComponent {
-//   @Input() product!: Product;
-//   quantity: number = 1;
-
-//   constructor(private router: Router) { }
-
-//   getStars(rating: number): number[] {
-//     return Array(Math.round(rating)).fill(0);
-//   }
-
-//   getStockStatus(): string {
-//     return this.product.stock > 0 ? 'In Stock' : 'Out of Stock';
-//   }
-
-//   getStockStatusClass(): string {
-//     return this.product.stock > 0 ? 'in-stock' : 'out-of-stock';
-//   }
-
-//   onSelectProduct(): void {
-//     this.router.navigate(['/product', this.product.id]);
-//   }
-// }

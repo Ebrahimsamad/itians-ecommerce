@@ -1,13 +1,10 @@
-
 .category-slider {
-
   padding: 5px 24px;
   position: relative;
 }
 
 .category-slider h2 {
   color: #2d5356;
-
 }
 
 .category-slider p {
@@ -31,7 +28,7 @@
   width: 250px;
   height: 200px;
   text-align: center;
-  margin:  auto 20px;
+  margin: auto 20px;
   max-width: 200px;
   transition: transform 0.3s ease;
   border: 4px solid #d09423;
@@ -57,7 +54,6 @@
   object-fit: contain;
 }
 
-
 .card-info h3 {
   color: #2d5356;
   font-size: 20px;
@@ -67,7 +63,6 @@
   color: #e6a23c;
   font-size: 16px;
 }
-
 
 button.prev,
 button.next {
@@ -91,7 +86,6 @@ button.prev:hover,
 button.next:hover {
   background-color: #e6a23c;
 }
-
 
 @media (max-width: 1000px) {
   .card {

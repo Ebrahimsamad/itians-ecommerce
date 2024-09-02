@@ -41,7 +41,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  // * Start Forget & Reset Password * //
+
   forgotPassword(emailData: { email: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/forgetPassword`, emailData).pipe(
       tap(() => console.log('Sending forgot password request:', emailData)),
@@ -64,9 +64,7 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
-  // * End of Forget and Reset Password * //
 
-  // ! Start Handle Favourite cart
   toggleFavourite(productId: string): Observable<{ message: string; favourites: any[] }> {
     const token = localStorage.getItem('token');
 
@@ -87,7 +85,7 @@ export class AuthService {
   getFavoriteProducts(productIds: string[]): Observable<any[]> {
     return this.http.post<any[]>(`${this.apiUrl}/products`, { ids: productIds });
   }
-  // ! End Handle Favourite cart
+
 
   private handleAuthentication(token: string, user: object): void {
     localStorage.setItem('token', `Bearer ${token}`);

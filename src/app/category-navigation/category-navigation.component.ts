@@ -18,7 +18,7 @@ OnInit(){
   @Output() categorySelected = new EventEmitter<string>();
 
   onCategorySelect(category: string) {
-    console.log('Category selected:', category); // Check if category ID is being emitted
+    console.log('Category selected:', category); 
     this.categorySelected.emit(category);
   }
 }

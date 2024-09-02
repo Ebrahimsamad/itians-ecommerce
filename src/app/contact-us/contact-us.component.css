@@ -1,7 +1,8 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-.contact-container, .second-container {
+.contact-container,
+.second-container {
   background-color: #2d5356;
   border-radius: 8px;
   padding: 30px;
@@ -32,24 +33,25 @@ body {
 .second-container p {
   margin-bottom: 10px;
 }
-input,textarea{
+input,
+textarea {
   background-color: #37474f;
 }
-.form-label{
+.form-label {
   display: block;
   color: #b0bec5;
   font-size: 14px;
   margin-bottom: 5px;
 }
-.second-container{
-background-color: #d09423;
-border-radius: 8px;
-padding: 30px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-margin-left: 10px;
+.second-container {
+  background-color: #d09423;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
 }
 
-.icon-container{
+.icon-container {
   width: 50px;
   height: 50px;
   background-color: #f8f1e9;
@@ -58,14 +60,12 @@ margin-left: 10px;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 7px ;
+  margin-top: 7px;
 }
 
 .icon-container i {
   font-size: 30px;
-  color:  #2d5356;
-
-
+  color: #2d5356;
 }
 .second-container {
   background-color: #d09423;

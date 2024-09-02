@@ -5,12 +5,12 @@
   height: 100%;
   width: 100%;
   background-attachment: fixed;
-   margin: 15px;
+  margin: 15px;
 }
 #myCarousel h4 {
   font-size: 50px;
   margin-bottom: 15px;
-  color: #FFF;
+  color: #fff;
   line-height: 100%;
   letter-spacing: 0.5px;
   font-weight: 600;
@@ -23,14 +23,14 @@
 #myCarousel .carousel-item a {
   background: #d09423;
   font-size: 14px;
-  color: #FFF;
+  color: #fff;
   padding: 13px 32px;
   display: inline-block;
 }
 #myCarousel .carousel-item a:hover {
   background: #fff;
   text-decoration: none;
-  color:#d09423;
+  color: #d09423;
 }
 
 #myCarousel .carousel-item h4 {
@@ -52,13 +52,16 @@
   height: auto;
   max-width: 100%;
 }
-#myCarousel h4, #myCarousel p, #myCarousel a, #myCarousel .carousel-item .mask img {
+#myCarousel h4,
+#myCarousel p,
+#myCarousel a,
+#myCarousel .carousel-item .mask img {
   -webkit-animation-duration: 1s;
   animation-duration: 1.2s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-#myCarousel  {
+#myCarousel {
   max-width: 1730px;
 }
 #myCarousel .carousel-item {
@@ -72,27 +75,23 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-
-
 }
 
 .carousel-item {
   position: relative;
   align-items: center;
   width: 100%;
-  transition: -webkit-transform .6s ease;
-  transition: transform .6s ease;
-  transition: transform .6s ease, -webkit-transform .6s ease;
+  transition: -webkit-transform 0.6s ease;
+  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, -webkit-transform 0.6s ease;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-perspective: 1000px;
   perspective: 1000px;
 }
 
-
-
-
-.carousel-control-next, .carousel-control-prev {
+.carousel-control-next,
+.carousel-control-prev {
   height: 40px;
   width: 40px;
   padding: 12px;
@@ -102,16 +101,14 @@
   background-color: #f47735;
 }
 
-
 .carousel-fade .carousel-item {
   opacity: 0;
-  -webkit-transition-duration: .6s;
-  transition-duration: .6s;
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
   -webkit-transition-property: opacity;
   transition-property: opacity;
   margin-top: 15px;
-  padding:0 30px;
-
+  padding: 0 30px;
 }
 .carousel-fade .carousel-item-next.carousel-item-left,
 .carousel-fade .carousel-item-prev.carousel-item-right,
@@ -137,8 +134,8 @@
   .carousel-fade .carousel-item-prev,
   .carousel-fade .carousel-item-prev.active,
   .carousel-fade .carousel-item.active {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 .carousel-fade .carousel-item-left.active,
@@ -151,73 +148,72 @@
 }
 
 @-webkit-keyframes fadeInLeft {
-from {
-  opacity: 0;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-}
-to {
-  opacity: 1;
-  -webkit-transform: none;
-  transform: none;
-}
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 @keyframes fadeInLeft {
-from {
-  opacity: 0;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-}
-to {
-  opacity: 1;
-  -webkit-transform: none;
-  transform: none;
-}
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 @-webkit-keyframes slideInRight {
-from {
-  -webkit-transform: translate3d(100%, 0, 0);
-  transform: translate3d(100%, 0, 0);
-  visibility: visible;
-}
-to {
-  -webkit-transform: none;
-  transform: none;
-}
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 @keyframes slideInRight {
-from {
-  -webkit-transform: translate3d(100%, 0, 0);
-  transform: translate3d(100%, 0, 0);
-  visibility: visible;
-}
-to {
-  -webkit-transform: none;
-  transform: none;
-}
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 @-webkit-keyframes fadeInUp {
-from {
-  opacity: 0;
-  -webkit-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
-}
-to {
-  opacity: 1;
-  -webkit-transform: none;
-  transform: none;
-}
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 @keyframes fadeInUp {
-from {
-  opacity: 0;
-  -webkit-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }
-to {
-  opacity: 1;
-  -webkit-transform: none;
-  transform: none;
-}
-}
-

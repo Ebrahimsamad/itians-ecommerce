@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 * {
   margin: 0;
@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #fff;
   color: #111;
   height: 100vh;
@@ -19,19 +19,22 @@ body {
   --marquee-width: 80vw;
   --marquee-height: 20vh;
   --marquee-elements-displayed: 5;
-  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+  --marquee-element-width: calc(
+    var(--marquee-width) / var(--marquee-elements-displayed)
+  );
   --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
 }
 
 .marquee {
   width: var(--marquee-width);
   height: var(--marquee-height);
-  background-color:  #2d5356;
+  background-color: #2d5356;
   color: #eee;
   overflow: hidden;
   position: relative;
 }
-.marquee:before, .marquee:after {
+.marquee:before,
+.marquee:after {
   position: absolute;
   top: 0;
   width: 10rem;
@@ -56,12 +59,13 @@ body {
 
   animation: scrolling var(--marquee-animation-duration, 15s) linear infinite;
 
-  width: calc(var(--marquee-element-width) * var(--marquee-elements-displayed) * 2);
-
+  width: calc(
+    var(--marquee-element-width) * var(--marquee-elements-displayed) * 2
+  );
 }
 
-.marquee-content li img{
-  width:100%
+.marquee-content li img {
+  width: 100%;
 }
 @keyframes scrolling {
   0% {
@@ -69,7 +73,6 @@ body {
   }
   100% {
     transform: translateX(-40%);
-
   }
 }
 .marquee-content li {
@@ -88,18 +91,16 @@ body {
 }
 
 @media (max-width: 600px) {
-  html { font-size: 12px; }
+  html {
+    font-size: 12px;
+  }
   :root {
     --marquee-width: 100vw;
     --marquee-height: 16vh;
     --marquee-elements-displayed: 3;
   }
-  .marquee:before, .marquee:after { width: 5rem; }
+  .marquee:before,
+  .marquee:after {
+    width: 5rem;
+  }
 }
-
-
-
-
-
-
-

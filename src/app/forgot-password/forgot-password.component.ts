@@ -45,7 +45,7 @@ export class ForgotPasswordComponent {
         this.successMessage =
           'A reset code has been sent to your email. Please check your inbox.';
         this.errorMessage = null;
-        // this.forgotPasswordForm.reset();
+
 
         setTimeout(() => {
           this.router.navigate(['/resetPassword'], {

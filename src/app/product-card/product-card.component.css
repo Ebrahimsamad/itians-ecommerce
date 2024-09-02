@@ -1,4 +1,4 @@
-/* Container for the product card */
+
 
 
 .card {
@@ -23,7 +23,6 @@
 .card-img-top {
     width: 100%;
     height: 200px;
-    /* Fixed height for images */
     object-fit: cover;
     border-bottom: 1px solid #e0e0e0;
     border-top-left-radius: 4px;
@@ -33,7 +32,7 @@
 .card-body {
     padding: 15px;
     flex: 1;
-    /* Allows the card body to expand and fill the remaining space */
+
 }
 
 .card-title {

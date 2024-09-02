@@ -12,7 +12,7 @@ export class IconsComponent implements AfterViewInit {
   constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
-    // تأخير لضمان تحميل كامل DOM
+
     setTimeout(() => {
       const root: HTMLElement = document.documentElement;
       const marqueeElementsDisplayed: number = parseInt(
@@ -24,10 +24,8 @@ export class IconsComponent implements AfterViewInit {
         const marqueeContentElement = this.marqueeContent.nativeElement as HTMLUListElement;
         const totalChildren = marqueeContentElement.children.length;
 
-        // تعيين خاصية CSS للعدد الإجمالي للعناصر
         root.style.setProperty("--marquee-elements", totalChildren.toString());
 
-        // نسخ العناصر وتكرارها
         for (let i = 0; i < marqueeElementsDisplayed; i++) {
           const clone: Node = marqueeContentElement.children[i % totalChildren].cloneNode(true);
           this.renderer.appendChild(marqueeContentElement, clone);
@@ -35,6 +33,6 @@ export class IconsComponent implements AfterViewInit {
       } else {
         console.error('Marquee Content Element is not found!');
       }
-    }, 100); // تأخير بسيط
+    }, 100);
   }
 }

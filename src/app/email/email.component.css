@@ -1,94 +1,94 @@
 .email-container {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9fb;
-  }
-  
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9fb;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-container {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+h2 {
+  color: #2d5356;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  padding: 12px;
+  background-color: #2d5356;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d09423;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
   .content {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
   }
-  
+
   .form-container {
-    flex: 1;
-    min-width: 300px;
-    margin-right: 20px;
-  }
-  
-  h2 {
-    color: #2d5356;
+    margin-right: 0;
     margin-bottom: 20px;
   }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  input, textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 12px;
-    background-color: #2d5356;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #d09423;
-  }
-  
-  .image-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .image-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  @media (max-width: 768px) {
+  @media (max-width: 400px) {
     .content {
       flex-direction: column;
       align-items: center;
     }
-  
+
     .form-container {
       margin-right: 0;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
-    @media (max-width: 400px) {
-        .content {
-          flex-direction: column;
-          align-items: center;
-        }
-      
-        .form-container {
-          margin-right: 0;
-          margin-bottom: 10px;
-        }
-  
-      }
-    }
+  }
+}
