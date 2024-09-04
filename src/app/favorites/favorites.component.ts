@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
+import { LocalStorageService } from '../service/local-storage.service';
 
 @Component({
   selector: 'app-favorites',
@@ -13,27 +14,21 @@ import { CardComponent } from '../card/card.component';
 export class FavoritesComponent implements OnInit {
   favoriteProducts: any[] = [];
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private localStorageService:LocalStorageService) {}
 
   ngOnInit(): void {
     this.loadFavoriteProducts();
-  }
+    this.localStorageService.getStorageChanges().subscribe(() => {
+      this.loadFavoriteProducts();
 
+    });
+  }
+  
   private loadFavoriteProducts(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = this.localStorageService.getItem<any>('user');
     if (user?.favourite) {
       this.favoriteProducts = user.favourite;
     }
-  }
-
-  toggleFavorite(product: any): void {
-    this.authService.toggleFavourite(product._id).subscribe({
-      next: (response) => {
-        this.favoriteProducts = response.favourites;
-        this.updateLocalStorage(response.favourites);
-      },
-      error: (err) => console.error('Error toggling favorite:', err),
-    });
   }
 
   private updateLocalStorage(favourites: any[]): void {

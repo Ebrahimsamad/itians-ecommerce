@@ -1,7 +1,5 @@
 <div class="container my-5">
-  <!-- <a routerLink="/products" routerLinkActive="active" class="text-warning mb-3 d-block">
-        ← Back to product list
-    </a> -->
+
   <div class="skeleton-screen" *ngIf="!product">
     <div class="skeleton-img-card">
       <div class="skeleton-img-card-image"></div>
@@ -10,7 +8,6 @@
     </div>
   </div>
 
-  <!-- Product details -->
   <div *ngIf="product">
     <div class="row justify-content-center">
       <div class="col-md-5 col-12 pt-1">
@@ -37,7 +34,6 @@
             </button>
           </div>
 
-          <!-- صور مصغرة -->
           <div class="containe-imge mt-3">
             <img
               *ngFor="let img of product?.images; let i = index"
@@ -51,7 +47,6 @@
         </div>
       </div>
 
-      <!-- Product Details Section -->
       <div class="col-md-5 col-12">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <span class="badge bg-light text-danger p-3 fs-3">
@@ -116,7 +111,6 @@
             >
               +
             </button>
-            <div id="snackbar ">Some text</div>
           </div>
         </ng-container>
         <div class="d-flex flex-row mb-lg-4">
@@ -156,6 +150,8 @@
           role="tab"
           aria-controls="reviews"
           aria-selected="false"
+          [attr.disabled]="!isLogin ? true : null"
+          [ngStyle]="{'background-color': !isLogin ? 'gray' : 'white'}"
         >
           Customer Reviews
         </button>
@@ -217,7 +213,6 @@
             </table>
           </div>
 
-          <!-- الجدول الثاني -->
           <div class="table-container col-sm-5">
             <table class="table">
               <thead>
@@ -262,7 +257,6 @@
         role="tabpanel"
         aria-labelledby="description-tab"
       >
-        <!-- تحقق من وجود تعليقات -->
         <ng-container
           *ngIf="product.reviews && product.reviews.length > 0; else noReviews"
         >

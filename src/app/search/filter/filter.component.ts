@@ -16,7 +16,7 @@ export class FilterComponent  {
   minPrice?: number;  
   maxPrice?: number;
   minPriceBarValue: number=0;  
-  maxPriceBarValue: number=30000;
+  maxPriceBarValue: number=10000;
   selectedCategory?: string;
   selectedBrand?: string;
   selectedStock?: boolean;  
@@ -51,8 +51,8 @@ export class FilterComponent  {
   }
  
 
-  onStockChange(stock: boolean): void {
-    this.selectedStock = stock;
+  onStockChange(sale: boolean): void {
+    this.sale = sale;
     this.emitFilters();
   }
 

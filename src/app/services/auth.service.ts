@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../service/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AuthService {
   private isAuthenticated = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticated.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,private localStorageService:LocalStorageService) {
     this.checkAuthStatus();
   }
 
@@ -73,7 +74,6 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      console.error('No token found. Please log in.');
       return throwError(() => new Error('No token provided'));
     }
 
@@ -91,8 +91,8 @@ export class AuthService {
   }
 
   private handleAuthentication(token: string, user: object): void {
+    this.localStorageService.setItem('user', user);
     localStorage.setItem('token', `Bearer ${token}`);
-    localStorage.setItem('user', JSON.stringify(user));
     this.isAuthenticated.next(true);
     this.router.navigate(['/']);
   }

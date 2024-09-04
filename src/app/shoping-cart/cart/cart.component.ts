@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CartListService } from '../../service/cart-list.service';
 import { PaymentServiceService } from '../../service/payment-service.service';
 import { CarselComponent } from "../carsel/carsel.component";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -35,24 +36,17 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
-      if (isAuthenticated) {
-        this.cartListService.getCart().subscribe(cart => {
-          this.carts = cart;
-        });
-      } else {
-        this.subscription = this.localStorageService.getItem('cart');
-        this.carts = this.subscription || [];
-        console.log(this.carts);
-      }
-    });
+    
+        this.carts =this.cartListService.getCart()
+      
+      
   }
 
   increaseQuantity(id: any) {
     const cartItem = this.carts.find((c) => c.product.id === id);
     if (cartItem && cartItem.quantity < cartItem.productBody.stock) {
       cartItem.quantity += 1;
-      this.localStorageService.updateQuantityInArray('cart', id, 1, cartItem.productBody);
+      this.cartListService.addToCart(cartItem.productBody,1)
     }
   }
 
@@ -60,15 +54,16 @@ export class CartComponent implements OnInit {
     const cartItem = this.carts.find((c) => c.product.id === id);
     if (cartItem && cartItem.quantity > 1) {
       cartItem.quantity -= 1;
-      this.localStorageService.updateQuantityInArray('cart', id, -1, cartItem.productBody);
+      this.cartListService.addToCart(cartItem.productBody,-1)
     } else if (cartItem && cartItem.quantity === 1) {
-      this.removeItem(id);
+      this.removeItem(cartItem.productBody);
     }
   }
 
-  removeItem(id: any) {
-    this.localStorageService.removeItemFromArray('cart', id);
-    this.carts = this.carts.filter((item) => item.product.id !== id);
+  removeItem(product: any) {
+
+    this.cartListService.removeFromCart(product)
+    this.carts = this.carts.filter((item) => item.product.id !== product._id);
   }
 
   getSubtotal() {
@@ -93,21 +88,32 @@ export class CartComponent implements OnInit {
   }
 
   checkOut() {
-    console.log(this.carts)
-    const items = this.carts.map(item => ({
-      product: {
-        title: item.productBody.title,
-        price: item.productBody.price
-      },
-      quantity: item.quantity
-    }));
+    this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
+      if (isAuthenticated) {
 
-    this.paymentService.startCheckout(items).subscribe((response) => {
-        window.location.href = response.url;
-      }, (error) => {
-        console.error('Error:', error);
-      });
-  }
+        const items = this.carts.map(item => ({
+          product: {
+            title: item.productBody.title,
+            price: item.productBody.price
+          },
+          quantity: item.quantity
+        }));
+    
+        this.paymentService.startCheckout(items).subscribe((response) => {
+            window.location.href = response.url;
+          }, (error) => {
+            console.error('Error:', error);
+          });
+        }else{
+          Swal.fire({
+            title: 'Error' ,
+            text: "Login First",
+            icon: 'error' ,
+            confirmButtonText: 'OK',
+            confirmButtonColor:  'red'
+          });
+        }})
+      }
 
 
 }

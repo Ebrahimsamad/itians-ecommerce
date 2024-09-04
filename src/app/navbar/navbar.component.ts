@@ -24,10 +24,6 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private userImageService: UserImageService, private authService: AuthService ,private localStorageService:LocalStorageService) {}
 
   ngOnInit(): void {
-    this.userImageService.userImage$.subscribe((imageSrc) => {
-      this.userImage = imageSrc;
-    });
-
     this.authService.isAuthenticated$.subscribe((status) => {
       this.isAuthenticated = status;
     });

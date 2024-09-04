@@ -24,8 +24,6 @@ body {
   text-align: left;
   font-weight: bold;
   border-bottom: none;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 .cart-table td {

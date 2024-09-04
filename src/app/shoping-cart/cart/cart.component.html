@@ -1,19 +1,19 @@
-<div class="container-fluid m-5">
+<div class="container my-5">
   <div class="row">
     <div class="col-lg-8">
       <div>
 
       </div>
-      <table class="cart-table">
-        <thead>
+      <table class="cart-table cart-table d-none d-md-table">
+        <thead >
           <tr>
-            <th style="font-weight: bold; border-top-left-radius: 10px">
+            <th >
               Product
             </th>
             <th>title</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th style="font-weight: bold; border-top-right-radius: 10px"></th>
+            <th ></th>
           </tr>
         </thead>
       </table>
@@ -84,10 +84,12 @@
             class="col-12 col-md-1 d-flex align-items-center justify-content-center"
           >
             <i
-              class="fa-solid fa-trash btn btn-outline-danger"
-              (click)="removeItem(cart.product.id)"
+              class="fa-solid fa-trash "
+              (click)="removeItem(cart.productBody)"
             >
             </i>
+            <i class="fa-solid fa-trash fs-5 text-danger"(click)="removeItem(cart.productBody)"></i>
+
           </div>
         </div>
       </div>

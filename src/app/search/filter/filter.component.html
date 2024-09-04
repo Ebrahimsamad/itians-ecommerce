@@ -44,7 +44,7 @@
     <h6>Stock Availability</h6>
     <div
       class="form-check border px-5 py-3 mb-2 w-75"
-      [ngClass]="{'selected': selectedStock === true}"
+      [ngClass]="{'selected': sale === true}"
       style="border-radius: 16px;"
       (click)="onStockChange(true)"
     >
@@ -53,17 +53,17 @@
         type="radio"
         name="stock"
         [value]="true"
-        [ngClass]="{'radioSelected': selectedStock === true}"
-        [checked]="selectedStock === true"
+        [ngClass]="{'radioSelected': sale === true}"
+        [checked]="sale === true"
         (change)="onStockChange(true)"
       />
       <label class="form-check-label">
-        In Stock
+        Have sale
       </label>
     </div>
     <div
       class="form-check border px-5 py-3 mb-2 w-75"
-      [ngClass]="{'selected': selectedStock === false}"
+      [ngClass]="{'selected': sale === false}"
       style="border-radius: 16px;"
       (click)="onStockChange(false)"
     >
@@ -72,12 +72,12 @@
         type="radio"
         name="stock"
         [value]="false"
-        [ngClass]="{'radioSelected': selectedStock === false}"
-        [checked]="selectedStock === false"
+        [ngClass]="{'radioSelected': sale === false}"
+        [checked]="sale === false"
         (change)="onStockChange(false)"
       />
       <label class="form-check-label">
-        Out of Stock
+        Not have sale
       </label>
     </div>
   </div>

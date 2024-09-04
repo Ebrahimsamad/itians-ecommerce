@@ -15,7 +15,9 @@ import { LoaderComponent } from "../../loader/loader.component";
 export class ProductListComponent {
   @Input()  products:any[] = [];
   p: number = 1;
-
+  get noData(): boolean {
+    return this.products.length === 0;
+  }
   
   onPageChange(page: number) {
     this.p = page;
