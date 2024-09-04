@@ -58,11 +58,11 @@ export class LoginComponent {
           } else {
             this.errorMessage = 'Invalid Email Or Password.';
           }
-          console.error('Login error:', error);
+          // console.error('Login error:', error);
         },
       });
     } else {
-      console.log('Form is invalid');
+      // console.log('Form is invalid');
     }
   }
 }
