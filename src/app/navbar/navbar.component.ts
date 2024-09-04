@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { UserImageService } from '../user-image.service';
 import { AuthService } from '../services/auth.service';
 import { LocalStorageService } from '../service/local-storage.service';
 
@@ -11,7 +10,7 @@ import { LocalStorageService } from '../service/local-storage.service';
   selector: 'app-navbar',
   standalone: true,
   imports: [NgIf, NgClass, RouterLink, FormsModule],
-templateUrl: './navbar.component.html',
+  templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
@@ -21,11 +20,15 @@ export class NavbarComponent implements OnInit {
   searchTerm: string = '';
   isAuthenticated: boolean = false;
   totalCartItems:number=0
-  constructor(private router: Router, private userImageService: UserImageService, private authService: AuthService ,private localStorageService:LocalStorageService) {}
+
+  constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.userImageService.userImage$.subscribe((imageSrc) => {
-      this.userImage = imageSrc;
+    this.updateCartItemCount();
+    this.updateUserImage();
+    this.localStorageService.getStorageChanges().subscribe(() => {
+      this.updateUserImage();
+      this.updateCartItemCount();
     });
 
     this.authService.isAuthenticated$.subscribe((status) => {
@@ -75,9 +78,18 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
   private updateCartItemCount() {
     const cart = this.localStorageService.getItem<any[]>('cart') || [];
     this.totalCartItems = cart.length;
   }
-}
 
+  private updateUserImage() {
+    const user = this.localStorageService.getItem<any>('user');
+    if (user && user.image) {
+      this.userImage = user.image;
+    } else {
+      this.userImage = 'path-to-default-image';
+    }
+  }
+}

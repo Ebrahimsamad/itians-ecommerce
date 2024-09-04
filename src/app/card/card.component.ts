@@ -5,11 +5,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
 import { DiscountPipe } from '../pipe/discount.pipe';
 import { CartListService } from '../service/cart-list.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [NgClass, NgStyle, NgIf, DiscountBadgePipe, DiscountPipe],
+  imports: [NgClass, NgStyle, NgIf, DiscountBadgePipe, DiscountPipe,RouterLink],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
 })

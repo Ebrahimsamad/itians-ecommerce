@@ -3,11 +3,12 @@ import { Component, Input } from '@angular/core';
 import { DiscountPipe } from '../pipe/discount.pipe';
 import { DiscountBadgePipe } from '../pipe/discount-badge.pipe';
 import { CardComponent } from "../card/card.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-grid',
   standalone: true,
-  imports: [CommonModule, DiscountPipe, DiscountBadgePipe, CardComponent],
+  imports: [CommonModule, DiscountPipe, DiscountBadgePipe, CardComponent,RouterLink],
   templateUrl: './product-grid.component.html',
   styleUrl: './product-grid.component.css'
 })

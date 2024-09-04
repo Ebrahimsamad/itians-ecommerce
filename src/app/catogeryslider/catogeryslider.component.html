@@ -1,4 +1,6 @@
-<div class="category-slider container mb-3">
+
+
+<div class=" container category-slider  mb-3">
   <h2 class="text-center text-capitalize fw-bold">Our Top Categories</h2>
   <p class="text-center">
     Some of the most common top online shopping categories include electronics
@@ -15,6 +17,7 @@
           class="d-flex align-items-center justify-content-center"
         >
           <div
+          (click)="goToPage(slide.link, slide.category)"
             class="card shadow-sm border-warning rounded-circle text-center mx-2"
           >
             <div class="card-img-container p-2">

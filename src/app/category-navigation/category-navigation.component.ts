@@ -12,13 +12,13 @@ export class CategoryNavigationComponent {
   @Input() categories: any[] = [];
 
 OnInit(){
-  console.log(this.categories)
+  
 }
 
   @Output() categorySelected = new EventEmitter<string>();
 
   onCategorySelect(category: string) {
-    console.log('Category selected:', category); 
+
     this.categorySelected.emit(category);
   }
 }
