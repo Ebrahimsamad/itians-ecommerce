@@ -14,6 +14,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { ContactUSComponent } from './contact-us/contact-us.component';
 import { CartComponent } from './shoping-cart/cart/cart.component';
 import { OrderCompleteComponent } from './order-complete/order-complete.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -70,6 +71,11 @@ const routes: Routes = [
   {
     path: 'cancel',
     component: CartComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+
   },
 ];
 
