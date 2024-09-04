@@ -13,7 +13,7 @@
       >
         <h4 class="collection-title">New Collection</h4>
         <h3 class="product-title text-center">Small Wireless Gaming</h3>
-        <a href="#" class="text-center" id="link">View All</a>
+        <a [routerLink]="['/product']" [queryParams]="{ catagory: 'HeadPhone' }" class="text-center" id="link" >View All</a>
       </div>
 
       <div class="product-image">
@@ -37,7 +37,7 @@
       >
         <h4 class="collection-title">New Collection</h4>
         <h3 class="product-title text-center">Small Wireless Gaming</h3>
-        <a href="#" class="text-center" id="link">View All</a>
+        <a [routerLink]="['/product']" [queryParams]="{ catagory: 'mobile' }" class="text-center" id="link">View All</a>
       </div>
 
       <div class="product-image">
@@ -61,7 +61,7 @@
       >
         <h4 class="collection-title">New Collection</h4>
         <h3 class="product-title text-center">Small Wireless Gaming</h3>
-        <a href="#" class="text-center" id="link">View All</a>
+        <a [routerLink]="['/product']" [queryParams]="{ catagory: 'Laptop' }" routerLinkActive="active-route" class="text-center" id="link">View All</a>
       </div>
 
       <div class="product-image">
@@ -71,7 +71,7 @@
 
     <div class="discount d-flex justify-content-center align-items-center">
       <h2 class="my-3" style="color: white">20% OFFER</h2>
-      <a
+      <a routerLink="/product" routerLinkActive="active-route"
         ><span class="badge bg-text-dark" id="link" >GET DISCOUNT</span></a
       >
     </div>

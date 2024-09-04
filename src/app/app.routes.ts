@@ -14,6 +14,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { ContactUSComponent } from './contact-us/contact-us.component';
 import { CartComponent } from './shoping-cart/cart/cart.component';
 import { OrderCompleteComponent } from './order-complete/order-complete.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,46 +31,52 @@ const routes: Routes = [
     path: 'product',
     component: SearchComponent,
   },
+
   {
     path: 'favourite',
     component: FavoritesComponent,
   },
+
   {
     path: 'about-us',
     component: AboutUsComponent,
   },
 
   {
-    path:"contact-us",
-    component:ContactUSComponent
+    path: 'contact-us',
+    component: ContactUSComponent,
   },
 
   {
-    path:"UserProfile",
-    component:UserProfileComponent
+    path: 'UserProfile',
+    component: UserProfileComponent,
   },
-  
+
   {
-    path:"Favourite",
-    component:FavoritesComponent
-  },
-  {
-    path:"details/:id",
-    component:ProductdetailsComponent
+    path: 'Favourite',
+    component: FavoritesComponent,
   },
   {
-    path:'cart',
-    component:CartComponent
+    path: 'details/:id',
+    component: ProductdetailsComponent,
   },
   {
-    path:'complete',
+    path: 'cart',
+    component: CartComponent,
+  },
+  {
+    path: 'complete',
     component: OrderCompleteComponent,
   },
   {
-    path:'cancel',
-    component:CartComponent
-  }
+    path: 'cancel',
+    component: CartComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
 
+  },
 ];
 
 export { routes };

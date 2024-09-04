@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { SliderImageComponent } from '../slider-image/slider-image.component';
 import { ImageDesginComponent } from '../image-desgin/image-desgin.component';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -11,6 +12,7 @@ declare var $: any;
   styleUrls: ['./designimage.component.css'],
 })
 export class DesignimageComponent {
+  constructor(private router: Router) {}
   texts: string[] = [
     'Enjoy with us',
     'To ITIANS',
@@ -26,6 +28,7 @@ export class DesignimageComponent {
   private currentCharIndex: number = 0;
   private isTyping: boolean = true;
   private intervalId: any;
+
 
   ngOnInit() {
     this.startTypingEffect();
@@ -66,5 +69,9 @@ export class DesignimageComponent {
       clearInterval(this.intervalId);
       setTimeout(() => this.startTypingEffect(), this.pauseBetweenTexts);
     }
+  }
+
+  navigateToProduct() {
+    this.router.navigate(['/product']);
   }
 }

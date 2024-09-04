@@ -83,11 +83,11 @@ export class RegisterComponent {
         error: (error) => {
           this.isLoading = false;
           this.errorMessage = error.message;
-          console.error('Registration error:', error);
+          // console.error('Registration error:', error);
         },
       });
     } else {
-      console.log('Form is invalid');
+      // console.log('Form is invalid');
     }
   }
 }
