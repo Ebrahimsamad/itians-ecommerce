@@ -38,9 +38,7 @@ export class FavoritesComponent implements OnInit {
       JSON.stringify({ ...user, favourite: favourites })
     );
   }
-  private loadFavoriteProducts(): void {
-
-  }
+ 
 }
 
 
