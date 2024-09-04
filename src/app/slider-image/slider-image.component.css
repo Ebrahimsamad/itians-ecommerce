@@ -155,11 +155,4 @@ body > .carousel {
   transform-origin: 100%;
 }
 
-.carousel__slider__item--active .item__3d-frame {
 
-}
-
-
-@media(min-width:768px){
-  display:none;
-}

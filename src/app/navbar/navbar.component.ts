@@ -65,7 +65,6 @@ export class NavbarComponent implements OnInit {
 
   performSearch() {
     if (this.searchTerm.trim()) {
-      console.log('Navigating to search with term:', this.searchTerm);
       this.router.navigate(['/search'], {
         queryParams: { q: this.searchTerm },
       });

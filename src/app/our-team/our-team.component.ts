@@ -20,16 +20,15 @@ export class OurTeamComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
-    // Initialize Owl Carousel using window.$
     (window as any).$('.owl-carousel').owlCarousel({
-      items: 3, // Number of items to show
-          loop: true, // Loop items
-          margin: 10, // Margin between items
-          nav: false, // Show navigation arrows
-          dots: true, // Show dots navigation
-          autoplay: true, // Auto play
-          autoplayTimeout: 3000, // Time between slides (in milliseconds)
-          autoplayHoverPause: true, // Pause on hover
+      items: 3, 
+          loop: true, 
+          margin: 10, 
+          nav: false, 
+          dots: true, 
+          autoplay: true, 
+          autoplayTimeout: 3000, 
+          autoplayHoverPause: true, 
           responsive: {
             0: {
               items: 1

@@ -25,7 +25,6 @@ export class TrendingProductsComponent implements OnInit {
       this.products=this.productsWithHighDiscount;
       this.allKElements = this.productsByCategory
       .map((item:any) => Object.keys(item)[0])
-      console.log(this.allKElements)
 
     });
   }
@@ -35,7 +34,6 @@ export class TrendingProductsComponent implements OnInit {
     if (categoryData) {
       this.products = categoryData[category];
     }
-    console.log(this.products);
   }
 
 }

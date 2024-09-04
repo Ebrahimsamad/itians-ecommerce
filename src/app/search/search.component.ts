@@ -42,7 +42,6 @@ export class SearchComponent {
     this.categoriy.getCategory().subscribe(
       response => {
         this.categories = response.categories;
-        console.log(response.categories)
       },
       error => {
         console.error('Error fetching products', error);

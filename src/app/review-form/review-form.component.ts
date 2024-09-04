@@ -30,11 +30,9 @@ export class ReviewFormComponent {
         content: this.newReviewContent,
         rating: this.rating
       };
-      console.log('Submitting review:', newReview);
 
       this.reviewService.addReview(this.productId, newReview).subscribe({
         next: review => {
-          console.log('Review submitted successfully:', review);
           this.reviewSubmitted.emit(review);
           this.newReviewContent = '';
           this.rating = 0;

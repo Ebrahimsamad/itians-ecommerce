@@ -48,9 +48,6 @@ export class ProductCardComponent {
   onSelectProduct(): void {
     this.router.navigate(['/product', this.product.id]);
   }
-  // handleAddToCart(product: any) {
-  //   this.productService.addToCart(product);
-  //   this.router.navigate(['/cart']);
-  // }
+ 
 }
 

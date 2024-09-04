@@ -98,12 +98,13 @@ export class CartComponent implements OnInit {
           },
           quantity: item.quantity
         }));
-    
+        this.localStorageService.removeItem('cart')
         this.paymentService.startCheckout(items).subscribe((response) => {
             window.location.href = response.url;
           }, (error) => {
             console.error('Error:', error);
           });
+
         }else{
           Swal.fire({
             title: 'Error' ,

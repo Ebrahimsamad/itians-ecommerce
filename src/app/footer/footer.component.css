@@ -1,27 +1,35 @@
 .footer {
-  background-color: white !important;
+  background-color: #2d5356; 
 }
 
 .footer h4 {
-  color: #535353;
+  color: #d09423; 
   font-weight: bold;
-  font-size: x-large;
+  font-size: 1.25rem;
 }
-.footer li {
-  font-family: Arial, sans-serif;
-}
+
 .footer a {
-  color: #b0b0b0;
+  color: #e0e0e0;
   text-decoration: none;
 }
-.list-unstyled {
-  font-size: x-large;
-}
-.footer-content .list-unstyled li a {
-  color: #7f8080;
-  text-decoration: none;
-}
+
 .footer a:hover {
-  color: #ffffff;
+  color: #d09423; 
   text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: #1a1a1a;
+}
+
+.footer-bottom a {
+  color: #d09423; 
+}
+
+.footer-bottom img {
+  vertical-align: middle;
+}
+
+.footer-bottom i {
+  font-size: 1.5rem;
 }

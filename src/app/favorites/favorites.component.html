@@ -9,7 +9,6 @@
     </div>
     <div class="col-lg-9">
       <div class="slider-container">
-        <!-- Check if there are any favorite products -->
         <div *ngIf="favoriteProducts && favoriteProducts.length > 0; else emptyState">
           <div class="row">
             <div
@@ -20,7 +19,6 @@
             </div>
           </div>
         </div>
-        <!-- Fallback if no favorite products are found -->
         <ng-template #emptyState>
           <img
             src="/Empty.gif"
