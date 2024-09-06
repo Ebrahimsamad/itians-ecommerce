@@ -9,6 +9,9 @@ import { importProvidersFrom } from '@angular/core';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(RouterModule.forRoot(routes), HttpClientModule),
+    importProvidersFrom(
+      RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' }),
+      HttpClientModule
+    ),
   ],
 }).catch((err) => console.error(err));

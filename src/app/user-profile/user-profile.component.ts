@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { PasswordService } from '../password.service';
 import { UserImageService } from '../user-image.service';
 import Swal from 'sweetalert2';
+import { LocalStorageService } from '../service/local-storage.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,7 +23,8 @@ export class UserProfileComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private passwordService: PasswordService,
-    private userImageService: UserImageService
+    private userImageService: UserImageService,
+    private localStorageService:LocalStorageService
   ) {
     this.userProfileForm = this.fb.group({
       name: [''],
@@ -99,7 +101,7 @@ export class UserProfileComponent implements OnInit {
 
     this.userService.updateUserData(formData).subscribe({
       next: (response) => {
-        localStorage.setItem("user", JSON.stringify(response.user));
+        this.localStorageService.setItem('user', response.user);
         this.showMessage('Profile updated successfully!');
       },
       error: (err) => {

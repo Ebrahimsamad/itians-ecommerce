@@ -11,6 +11,7 @@ import { ReviewFormComponent } from '../review-form/review-form.component';
 import { AuthService } from '../services/auth.service';
 import { LocalStorageService } from '../service/local-storage.service';
 import { CartListService } from '../service/cart-list.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productdetails',
@@ -29,9 +30,10 @@ export class ProductdetailsComponent implements OnInit {
   showQuantityControls = false;
   favorites: any[] = [];
   newReviewContent: string = '';
-  isLogin:boolean = false;
   carts: any ;
   subscription: any;
+  isAuthenticated: boolean = false;  
+
 
   constructor(
     private cartListService: CartListService,
@@ -42,6 +44,9 @@ export class ProductdetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
+      this.isAuthenticated = isAuthenticated;  
+    });
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
@@ -63,18 +68,9 @@ export class ProductdetailsComponent implements OnInit {
     if(this.carts)this.showQuantityControls = true;
     if(this.carts)this.showQuantityControls = true;
     this.quantity= this.carts.quantity
-    this.isLogined()
   }
-  isLogined(){
-    this.authService.isAuthenticated$.subscribe(isAuthenticated => {
-      if (isAuthenticated) {
-        this.isLogin=true
-      }else{
-        this.isLogin=false
-      }
-    })  
+  
  
-  }
   handleReviewSubmission(newReview: any) {
     this.product=newReview.product
   }
@@ -183,5 +179,27 @@ addToCart(): void {
     this.selectedImage = product.images[0];
     this.quantity = 1;
   }
+  reviewClick() {
+    if (this.isAuthenticated) {
+      // Manually switch to the Reviews tab
+      const reviewsTab = document.getElementById('reviews-tab');
+      const reviewsContent = document.getElementById('reviews');
+      if (reviewsTab && reviewsContent) {
+        // Bootstrap method to activate the tab
+        const bootstrapTab = new (window as any).bootstrap.Tab(reviewsTab);
+        bootstrapTab.show();  // Activate the reviews tab
+      }
+    } else {
+      // Show alert if not logged in
+      Swal.fire({
+        title: 'Error',
+        text: 'Login First',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: 'red'
+      });
+    }
+  }
+  
 
 }
