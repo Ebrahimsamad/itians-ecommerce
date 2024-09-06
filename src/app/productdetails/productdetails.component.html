@@ -150,6 +150,8 @@
         aria-controls="reviews"
         aria-selected="false"
         (click)="reviewClick()"
+        [attr.data-bs-toggle]="isAuthenticated ? 'tab' : null"
+        [attr.data-bs-target]="isAuthenticated ? '#reviews' : null"
       >
         Customer Reviews
       </button>

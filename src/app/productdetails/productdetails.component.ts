@@ -180,17 +180,8 @@ addToCart(): void {
     this.quantity = 1;
   }
   reviewClick() {
-    if (this.isAuthenticated) {
-      // Manually switch to the Reviews tab
-      const reviewsTab = document.getElementById('reviews-tab');
-      const reviewsContent = document.getElementById('reviews');
-      if (reviewsTab && reviewsContent) {
-        // Bootstrap method to activate the tab
-        const bootstrapTab = new (window as any).bootstrap.Tab(reviewsTab);
-        bootstrapTab.show();  // Activate the reviews tab
-      }
-    } else {
-      // Show alert if not logged in
+    if (!this.isAuthenticated) {
+      
       Swal.fire({
         title: 'Error',
         text: 'Login First',
